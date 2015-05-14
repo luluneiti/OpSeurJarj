@@ -1,3 +1,3 @@
 # Yatzy
 
-Ensimmäinen rivi
+Aihe vaihdettu opintojen seurantajärjestelmästä Yatzy peliin.
