@@ -1,3 +1,3 @@
-# OpSeurJarj
+# Yatzy
 
-Ensimm‰inen rivi
+Ensimm√§inen rivi
