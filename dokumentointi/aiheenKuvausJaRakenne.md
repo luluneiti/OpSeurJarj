@@ -7,7 +7,7 @@ Peliä voi pelata yksi tai useampi pelaaja. Pelatessaan yksin pelaaja voi yritt�
 ####Toiminnot:
 * Sovellus lukee pelaajien tiedot tiedostosta pelin käynnistyessä
 * Sovellus pyytää alussa pelaajien lukumäärää ja nimiä.
-* Pelaaja heittää noppia. Kukin pelaaja saa vuorollaan heittää noppia kolme kertaa. Ensimmäisellä kerralla on heitettävä kaikki nopat. Seuraavalla kahdella heittokerralla pelaaja pelaaja päättää mitä pelaajan noppaa tai noppia heitetään.
-* Kun pöytäkirjan kaikki yhdistelmät on käyty läpi, sovellus laskee pelaajien pisteet.
+* Pelaaja heittää noppia. Pelaaja saa vuorollaan heittää noppia kolme kertaa. Ensimmäisellä kerralla on heitettävä kaikki nopat. Seuraavalla kahdella heittokerralla pelaaja pelaaja päättää mitä pelaajan noppaa tai noppia heitetään.
+* Kun pöytäkirjan kaikki yhdistelmät on käyty läpi, sovellus laskee pelaajan/pelaajien pisteet.
 * Sovellus tallettaa pelaajien ennätyspisteet ja kirjoittaa pelaajien tiedot tiedostoon.
 
