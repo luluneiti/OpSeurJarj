@@ -1,8 +1,8 @@
-#Aihe:
+##Aihe:
 Opintojen seurantajärjestelmän avulla opiskelija voi syöttää opintosuunnitelmansa, kursseille osallistumisia sekä kurssien arvosanoja. 
-#Käyttäjä: 
+##äyttäjä: 
 Opiskelija
-#Toiminnot:
+##Toiminnot:
 *lisätä opiskelija
 *muuta opiskelijan tietoja
 *poistaa opiskelija
