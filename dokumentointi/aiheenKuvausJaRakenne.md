@@ -2,7 +2,7 @@
 Toteutetaan Yatzy/jatsi peli, jota voi pelata yksi tai useampi henkilö. Yatzy on viidellä nopalla pelattava peli. Pelin tarkoituksena on saavuttaa noppia heittämällä mahdollisimman monta erilaista lukujen yhdistelmää. Yhdistelmien tulos merkitään pöytäkirjaan. Pöytäkirjan täytyttyä voittaja on se pelaaja, jolla on korkeimmat pisteet. Pelatessaan yksin pelaaja voi yrittää rikkoa entisen henkilökohtaisen ennätyksensä. Pelistä toteutetaan ensin ns. pakkoyatzy versio, jossa pöytäkirjaa täytetään järjestyksessä ylhäältä alas, eli pelaaja ei voi valita pelattavaa yhdistelmää.
 
 ####Käyttäjä: 
-Peliä voi pelata yksi tai useampi pelaaja. 
+Yksi tai useampi pelaaja 
 
 ####Toiminnot:
 * Sovellus lukee pelaajien tiedot tiedostosta pelin käynnistyessä.
