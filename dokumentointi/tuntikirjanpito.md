@@ -5,4 +5,4 @@
 * **15.5.2015** 6 h Toteuttaminen ja testitapaukset sekä luokkakaavion työstäminen
 * **18.5.2015** 7 h Toteutus ja testitapaukset
 * **19.5.2015** 5 h Pit raportit, toteutus
-* **20.5.2015** 6 h Toteutus ja testitapaukset, pit raportit
+* **20.5.2015** 7 h Toteutus ja testitapaukset, pit raportit, palautuksen teko
