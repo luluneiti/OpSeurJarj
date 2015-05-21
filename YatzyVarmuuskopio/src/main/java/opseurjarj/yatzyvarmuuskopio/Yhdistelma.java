@@ -1,13 +1,13 @@
 package sovelluslogiikka;
 
 /**
- * Yhdistelma tarjoaa tiedot ja palvelut yhdistelmien tallentamiseen
+ * Luokka...
  *
  */
 public class Yhdistelma {
 
     private YhdistelmanNimi nimi;
-    private int jarjestysNumero; //ei toistaiseksi käytössä
+    private int jarjestysNumero;
     private int pisteet;
 
     public Yhdistelma(YhdistelmanNimi yhdistemanNimi) {

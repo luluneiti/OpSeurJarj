@@ -1,7 +1,7 @@
 package sovelluslogiikka;
 
 /**
- * Pelaaja luokka tarjoaa tiedot ja palvelut pelaajan tietojen tallentamiseen
+ * Pelaaja..
  */
 public class Pelaaja {
 
@@ -9,7 +9,7 @@ public class Pelaaja {
     private int ennatyspisteet;
 
     public Pelaaja(String nimi) {
-        if (nimi != null && !nimi.isEmpty()) {
+        if (!nimi.isEmpty()) {
             this.nimi = nimi;
         } else {
             throw new IllegalArgumentException("Pelaajan nimi ei voi olla tyhjä merkkijono");
@@ -48,22 +48,20 @@ public class Pelaaja {
         return this.nimi;
     }
 
-    public int compareTo(Pelaaja verrattava) {
-
-        if (this.nimi.compareToIgnoreCase(verrattava.annaNimi()) > 0) {
+    @Override
+    public int hashCode() {
+        if (this.nimi == null) {
             return 1;
-        } else if (this.nimi.compareToIgnoreCase(verrattava.annaNimi()) < 0) {
-            return -1;
-        } else {
-            return 0;
         }
-
+        return this.nimi.hashCode();
     }
 
-    public boolean equals(Pelaaja verrattava) {
-
-        return this.nimi.equals(verrattava.annaNimi());
-
+    @Override
+    public boolean equals(Object toinen) {
+        if (toinen == null) {
+            return false;
+        }
+        return this.nimi.equals(((Pelaaja) toinen).nimi);
     }
 
 }

@@ -16,7 +16,5 @@ public interface PeliMuunnelma {
     
     public ArrayList<Yhdistelma> luoYhdistelmat();
     
-    public int annaKierroksienMaara();
-    
     public YhdistelmanNimi annaPelattavaYhdistelma(int kierroslkm);
 }

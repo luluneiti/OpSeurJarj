@@ -1,7 +1,7 @@
 package sovelluslogiikka;
 
 /**
- * YhdiselmanNimi tarjoaa käytettäviss olevien yhdistelmien nimet muiden käyttöön
+ * Luokka tarjoaa käytettäviss olevien yhdistelmien nimet
  *
  */
 public enum YhdistelmanNimi {

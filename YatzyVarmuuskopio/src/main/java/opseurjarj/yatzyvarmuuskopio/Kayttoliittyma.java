@@ -1,7 +1,7 @@
 package kayttoliittyma;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Scanner;
 import sovelluslogiikka.*;
 
@@ -18,8 +18,11 @@ public class Kayttoliittyma {
 
         while (!nimi.isEmpty()) {
 
-            pelaajaHallinta.lisaaPelaaja(nimi);
-
+            try {
+                pelaajaHallinta.lisaaPelaaja(nimi);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
             System.out.println("Anna pelaajan nimi");
             nimi = lukija.nextLine();
         }
@@ -27,10 +30,14 @@ public class Kayttoliittyma {
         System.out.println("Anna pelattavan muunnelman nimi");
         String muunnelma = lukija.nextLine();
 
-        pelihall = new PelinHallinta(muunnelma);
+        try {
+            pelihall = new PelinHallinta(muunnelma);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
 
-        System.out.println("");
-        List<Pelaaja> pelaajat = pelaajaHallinta.annaPelaajat(); //tekee tulevaisuudessa omat nopat ja muut käyttöliitymä komponentit
+        }
+
+        HashSet<Pelaaja> pelaajat = pelaajaHallinta.annaPelaajat(); //tekee tulevaisuudessa omat nopat ja muut käyttöliitymä komponentit
 
         int[] indeksit = {0, 1, 2, 3, 4}; //toistaiseksi heitetään kaikkia noppia
 
@@ -45,7 +52,6 @@ public class Kayttoliittyma {
                 for (Integer lukema : lukemat) {
                     System.out.print(lukema);
                 }
-
                 System.out.println("");
 
                 System.out.println(pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(pelaaja.annaNimi())); //tulevaisuudessa näytetään vasta kun lopettaa heittämisen

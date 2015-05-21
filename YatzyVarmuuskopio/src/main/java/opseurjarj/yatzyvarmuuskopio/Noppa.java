@@ -1,8 +1,7 @@
 package sovelluslogiikka;
 
 /**
- * Noppa on toistaiseksi kuusisivuinen arpakuutio, joka arpoo uuden lukeman pyydettäessä
- * Jos nopan sivujen määrä annettaisiin konstruktorissa, niin sivujen määrä voisi olla jokin muukin kuin kuusi.
+ * Noppa ...
  */
 public class Noppa {
 

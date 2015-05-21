@@ -1,20 +1,20 @@
 package sovelluslogiikka;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 
 /**
- * Pelihallinta luokka hallinnoi pelaajien noppia ja yhdistelmiä sskä hallinnoi
- * pelin kulkua
+ * Pelihallinta luokka hallinnoi pelaajien noppia ja yhdistelmiä
+ *
  */
 public class PelinHallinta {
 
     private static int kierroslkm;
-    private static int maxkierroslkm;
     private static PeliMuunnelma peli;
     private static Pelaajat pelaajienHallinta = new Pelaajat();
-    private static List<Pelaaja> pelaajaLista;
+    private static HashSet<Pelaaja> pelaajaLista;
     private static HashMap<String, ArrayList<Noppa>> pelaajienNopat;
     private static HashMap<String, ArrayList<Yhdistelma>> pelaajienYhdistelmat;
 
@@ -27,23 +27,14 @@ public class PelinHallinta {
     public PelinHallinta(String muunnelma) {
 
         kierroslkm = 1;
-
-        try {
-            if (muunnelma == null || !muunnelma.equalsIgnoreCase("pakkojatsi")) {
-                throw new IllegalArgumentException("Antamasi pelimuunnelma ei ole käytettävissä");
-            }
-            if (muunnelma.equalsIgnoreCase("pakkojatsi")) {
-                peli = new Pakkojatsi();
-                maxkierroslkm = peli.annaKierroksienMaara();
-
-                pelaajaLista = pelaajienHallinta.annaPelaajat();
-                luoPelaajienNopat();
-                luoPelaajienYhdistelmat();
-
-            }
-        } catch (Exception e) {
+        if (muunnelma.equalsIgnoreCase("pakkojatsi")) {
+            peli = new Pakkojatsi();
+        } else {
             throw new IllegalArgumentException("Antamasi pelimuunnelma ei ole käytettävissä");
         }
+        pelaajaLista = pelaajienHallinta.annaPelaajat();
+        luoPelaajienNopat();
+        luoPelaajienYhdistelmat();
 
     }
 
@@ -91,110 +82,21 @@ public class PelinHallinta {
      */
     public void heitaPelaajanNoppia(String nimi, int[] indeksit) {
 
-        if (kierroslkm <= maxkierroslkm) {
+        ArrayList<Integer> lukemat = new ArrayList<Integer>();
+        int i = 0;
+        ArrayList<Noppa> nopat = pelaajienNopat.get(nimi);
 
-            ArrayList<Integer> lukemat = new ArrayList<Integer>();
-            int i = 0;
-            ArrayList<Noppa> nopat = pelaajienNopat.get(nimi);
+        for (Noppa noppa : nopat) {
 
-            for (Noppa noppa : nopat) {
-
-                if (onkoIndeksiJoukossa(indeksit, i)) {
-                    noppa.heita();
-                }
-                lukemat.add(noppa.annaLukema()); //muös aiemmat lukemat mukaan
-                i++;
-
+            if (onkoIndeksiJoukossa(indeksit, i)) {
+                noppa.heita();
             }
-            yllapidaYhidstelmanPisteet(nimi, lukemat);
-        } else {
-            throw new IllegalArgumentException("Peli on loppu");
+            lukemat.add(noppa.annaLukema()); //muös aiemmat lukemat mukaan
+            i++;
+
         }
-    }
+        yllapidaYhidstelmanPisteet(nimi, lukemat);
 
-    /**
-     * Apumetodi pyydettäessä tutkii onko ko. indeksi pyydettyjen indeksien
-     * joukossa Noppien heitto-metodi kutsuu tätä metodia selvittääkseen, että
-     * onko pelaajan ko. noppaa pydetty heittää
-     *
-     * @param indeksit, indeksi
-     * @return boolean arvo
-     */
-    private static boolean onkoIndeksiJoukossa(int[] indeksit, int indeksi) {
-
-        for (Integer ind : indeksit) {
-            if (ind == indeksi) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-   
-
-    /**
-     * Apumetodi joka pyydettäessä ylläptää pyydetyn pelaajan pelattavan
-     * yhdistelman pisteet nopan lukemien mukaisesti
-     *
-     * @param nimi, lukemat
-     */
-    private static void yllapidaYhidstelmanPisteet(String nimi, ArrayList<Integer> lukemat) {
-
-        int pist = peli.laskeYhdistelmanPisteet(lukemat, kierroslkm);
-        YhdistelmanNimi pelattavaYhd = peli.annaPelattavaYhdistelma(kierroslkm);
-
-        ArrayList<Yhdistelma> pelaajanYhd = pelaajienYhdistelmat.get(nimi);
-
-        for (Yhdistelma yhdistel : pelaajanYhd) {
-
-            if (yhdistel.annaNimi() == pelattavaYhd) {
-                yhdistel.asetaPisteet(pist);
-            }
-        }
-
-    }
-
-     /**
-     * Metodi joka palauttaa pydetyn pelaajan noppien lukemat
-     *
-     * @param nimi
-     * @return lukemat
-     */
-    public ArrayList<Integer> annaPelaajanNoppienLukemat(String nimi) {
-
-        if (kierroslkm <= maxkierroslkm) {
-            ArrayList<Noppa> nopat = pelaajienNopat.get(nimi);
-            ArrayList<Integer> lukemat = new ArrayList<Integer>();
-            for (Noppa noppa : nopat) {
-                lukemat.add(noppa.annaLukema());
-            }
-
-            return lukemat;
-        } else {
-            throw new IllegalArgumentException("Peli on loppu");
-        }
-    }
-    /**
-     * Metodi joka antaa pyydetyn pelaajan pelattavan yhdistelman pisteet
-     *
-     * @param nimi
-     * @return pisteet
-     */
-    public int annaPelaajanViimeisimmanYHdistelmanPisteet(String nimi) {
-
-        YhdistelmanNimi pelattavaYhd = peli.annaPelattavaYhdistelma(kierroslkm);
-        System.out.print(pelattavaYhd + ": ");
-        int pist = 0;
-        ArrayList<Yhdistelma> pelaajanYhd = pelaajienYhdistelmat.get(nimi);
-
-        for (Yhdistelma yhdistel : pelaajanYhd) {
-
-            if (yhdistel.annaNimi() == pelattavaYhd) {
-                pist = yhdistel.annaPisteet();
-            }
-        }
-        tarkistaAlkaakoUusiKierros();
-        return pist;
     }
 
     /**
@@ -225,10 +127,11 @@ public class PelinHallinta {
 
         }
 
-        if (kolmaskierroKaikilla == pelaajaLista.size() && kierroslkm <= maxkierroslkm + 1) {
+        if (kolmaskierroKaikilla == pelaajaLista.size() && kierroslkm < 14) {
             kierroslkm++;                                   //KIERRO VOI VAIHTUA MYÖS ENNEN KUIN HEITETTY KOLME KERTAA-> PELAAJA PAINAA LOPETA PAINIKETTA!
-            nollaaPelaajienNoppienKierroslkm();
+            nollaPelaajienNoppienKierroslkm();
         }
+        //System.out.println("kierros: "+kierroslkm);
 
     }
 
@@ -236,7 +139,7 @@ public class PelinHallinta {
      * Apumetodi joka pyydettäessä nollaa kaikkien noppien kierroslukumittarin
      *
      */
-    private static void nollaaPelaajienNoppienKierroslkm() {
+    private static void nollaPelaajienNoppienKierroslkm() {
 
         for (Pelaaja pelaaja : pelaajaLista) {
 
@@ -249,6 +152,86 @@ public class PelinHallinta {
 
         }
 
+    }
+
+    /**
+     * Metodi joka palauttaa pydetyn pelaajan noppien lukemat
+     *
+     * @param nimi
+     * @return lukemat
+     */
+    public ArrayList<Integer> annaPelaajanNoppienLukemat(String nimi) {
+
+        ArrayList<Noppa> nopat = pelaajienNopat.get(nimi);
+        ArrayList<Integer> lukemat = new ArrayList<Integer>();
+        for (Noppa noppa : nopat) {
+            lukemat.add(noppa.annaLukema());
+        }
+
+        return lukemat;
+    }
+
+    /**
+     * Apumetodi pyydettäessä tutkii onko ko. indeksi pyydettyjen indeksien
+     * joukossa Noppien heitto-metodi kutsuu tätä metodia selvittääkseen, että
+     * onko pelaajan ko. noppaa pydetty heittää
+     *
+     * @param indeksit, indeksi
+     * @return boolean arvo
+     */
+    private static boolean onkoIndeksiJoukossa(int[] indeksit, int indeksi) {
+
+        for (Integer ind : indeksit) {
+            if (ind == indeksi) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Apumetodi joka pyydettäessä ylläptää pyydetyn pelaajan pelattavan
+     * yhdistelman pisteet nopan lukemien mukaisesti
+     *
+     * @param nimi, lukemat
+     */
+    private static void yllapidaYhidstelmanPisteet(String nimi, ArrayList<Integer> lukemat) {
+
+        int pist = peli.laskeYhdistelmanPisteet(lukemat, kierroslkm);
+        YhdistelmanNimi pelattavaYhd = peli.annaPelattavaYhdistelma(kierroslkm);
+
+        ArrayList<Yhdistelma> pelaajanYhd = pelaajienYhdistelmat.get(nimi);
+
+        for (Yhdistelma yhdistel : pelaajanYhd) {
+
+            if (yhdistel.annaNimi() == pelattavaYhd) {
+                yhdistel.asetaPisteet(pist);
+            }
+        }
+
+    }
+
+    /**
+     * Metodi joka antaa pyydetyn pelaajan pelattavan yhdistelman pisteet
+     *
+     * @param nimi
+     * @return pisteet
+     */
+    public int annaPelaajanViimeisimmanYHdistelmanPisteet(String nimi) {
+
+        YhdistelmanNimi pelattavaYhd = peli.annaPelattavaYhdistelma(kierroslkm);
+        System.out.print(pelattavaYhd + ": ");
+        int pist = 0;
+        ArrayList<Yhdistelma> pelaajanYhd = pelaajienYhdistelmat.get(nimi);
+
+        for (Yhdistelma yhdistel : pelaajanYhd) {
+
+            if (yhdistel.annaNimi() == pelattavaYhd) {
+                pist = yhdistel.annaPisteet();
+            }
+        }
+        tarkistaAlkaakoUusiKierros();
+        return pist;
     }
 
     /**

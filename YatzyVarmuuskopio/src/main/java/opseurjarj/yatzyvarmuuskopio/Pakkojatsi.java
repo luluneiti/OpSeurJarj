@@ -3,10 +3,10 @@ package sovelluslogiikka;
 import java.util.ArrayList;
 
 /**
- * Pakkojatsi luokka tarjoaa pakkojatsi pelimuunnelman logiikan. Tietää noppien
- * lukumäärän, pelattavat yhdistelmat ja oaaa laskea pisteet yhdistelmalle sekä  
- * kokonaispisteet pakkojatsin säännöin
- * Jos osa säännöistä sopii melkein kaikille jatsin muunnelmille, niin voimme viedä sen default metodiksi rajapintaan
+ * Pakkojatsi luokka tarjoaa pakkojatsi pelimuunnelman logiikan Tietää noppien
+ * lukumäärän, pelattavat yhdistelmat Osaa laskea yhdistelman ja kokonais
+ * pisteet pakkojatsin säännöin
+ *
  */
 public class Pakkojatsi implements PeliMuunnelma {
 
@@ -21,9 +21,10 @@ public class Pakkojatsi implements PeliMuunnelma {
     public int laskeYhdistelmanPisteet(ArrayList<Integer> lukemat, int kierroslkm) {
 
         int summa = 0;
-        for (Integer luku : lukemat) { 
+        //ei tarvitse tietoa pelattavasta yhdistelmasta
+        for (Integer luku : lukemat) {
 
-            if (kierroslkm == 1) { //MITEN SAISI IF HIRVIÖT KORVATTUA...
+            if (kierroslkm == 1) {
                 if (luku == 1) {
                     summa++;
                 }
@@ -80,7 +81,6 @@ public class Pakkojatsi implements PeliMuunnelma {
         }
 
         return summa;
-
     }
 
     /**
@@ -197,11 +197,6 @@ public class Pakkojatsi implements PeliMuunnelma {
         yhdistelmat.add(new Yhdistelma(YhdistelmanNimi.yatzy));
 
         return yhdistelmat;
-    }
-
-    @Override
-    public int annaKierroksienMaara() {
-        return 15;
     }
 
 }

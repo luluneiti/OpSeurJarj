@@ -1,7 +1,6 @@
 package sovelluslogiikka;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 /**
  * Pelaajat luokka pitää tallessa pelaajien tiedot ja tarjoaa tietoja muille
@@ -10,7 +9,7 @@ import java.util.List;
  */
 public class Pelaajat {
 
-    private static List<Pelaaja> pelaajat = new ArrayList<Pelaaja>();
+    private static HashSet<Pelaaja> pelaajat = new HashSet<Pelaaja>();
 
     /**
      * Metodi jolla lisätään pelaaja
@@ -20,12 +19,10 @@ public class Pelaajat {
      */
     public void lisaaPelaaja(String nimi) {
 
-        for (Pelaaja pelaaja : pelaajat) {
-            if (pelaaja.annaNimi().equals(nimi)) {
-                throw new IllegalArgumentException("Pelaaja on jo olemassa");
-            }
-
+        if (pelaajat.contains(nimi)) {  //EI TULE TRUE...
+            throw new IllegalArgumentException("Pelaaja on jo olemassa");
         }
+
         pelaajat.add(new Pelaaja(nimi));
 
     }
@@ -35,7 +32,7 @@ public class Pelaajat {
      *
      * @return kaikki pelaajat
      */
-    public List<Pelaaja> annaPelaajat() {
+    public HashSet<Pelaaja> annaPelaajat() {
         if (pelaajat.isEmpty()) {
             return null;
         }

@@ -1,12 +1,15 @@
 package sovelluslogiikka;
 
-import java.util.HashSet;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+
 
 public class PelaajatTestit {
 
@@ -23,41 +26,12 @@ public class PelaajatTestit {
 
     @Before
     public void setUp() {
+
     }
 
     @After
     public void tearDown() {
     }
-
-    /**
-     * lisaaPelaaja metodin testi
-     */
-    @Test
-    public void lisaaPelaaja() {
-
-        Pelaajat pelaajat = new Pelaajat();
-        pelaajat.lisaaPelaaja("Ulla");
-
-    }
-
-    /**
-     * lisaaPelaaja metodin testi
-     */
-   /* @Test
-    public void lisaaTuplaPelaaja() { //ei tule poikkeusta
-
-        Pelaajat pelaajat = new Pelaajat();
-        pelaajat.lisaaPelaaja("Ulla");
-        try {
-            pelaajat.lisaaPelaaja("Ulla");
-            fail("Pitäisi tulla poikkeus");
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            fail("Tuli väärä poikkeus: " + e.getMessage());
-        }
-
-    }*/
 
     /**
      * annaPelaajat metodin testi
@@ -66,8 +40,10 @@ public class PelaajatTestit {
     public void annaPelaajatTyhjaLista() {
 
         Pelaajat pelaajat = new Pelaajat();
-        HashSet<Pelaaja> pelaajaLista = pelaajat.annaPelaajat();
-        //assertEquals(null, pelaajaLista);   //tämä ehto ei toimi..
+        List<Pelaaja> pelaajaLista = pelaajat.annaPelaajat();
+        if (pelaajaLista != null) {
+            fail();
+        }
 
     }
 
@@ -77,30 +53,11 @@ public class PelaajatTestit {
     @Test
     public void annaPelaajat() {
 
-        Pelaajat pelaajat = new Pelaajat();
-        pelaajat.lisaaPelaaja("Ulla");
-        pelaajat.lisaaPelaaja("Allu");
-        HashSet<Pelaaja> pelaajaLista = pelaajat.annaPelaajat();
+        Pelaajat pelaajat2 = new Pelaajat();
+        pelaajat2.lisaaPelaaja("Ulla");
+        pelaajat2.lisaaPelaaja("Allu");
+        List<Pelaaja> pelaajaLista = pelaajat2.annaPelaajat();
         assertEquals(2, pelaajaLista.size());
 
     }
-
-    /**
-     * annaPelaajat metodin testi
-     */
-    @Test
-    public void annaPelaajatTupla() {
-
-        Pelaajat pelaajat = new Pelaajat();
-        pelaajat.lisaaPelaaja("Ulla");
-        try {
-            pelaajat.lisaaPelaaja("Ulla");
-        } catch (IllegalArgumentException e) {
-            // ok
-        }
-        HashSet<Pelaaja> pelaajaLista = pelaajat.annaPelaajat();
-        //assertEquals(1, pelaajaLista.size());   // vie tuplia...
-
-    }
-
 }
