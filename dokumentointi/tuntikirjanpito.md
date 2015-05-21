@@ -6,3 +6,4 @@
 * **18.5.2015** 7 h Toteutus ja testitapaukset
 * **19.5.2015** 5 h Pit raportit, toteutus
 * **20.5.2015** 7 h Toteutus ja testitapaukset, pit raportit, palautuksen teko
+* **21.5.2015** 3 h Palautuksen jatkaminen
