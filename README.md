@@ -2,4 +2,4 @@
 
 Aihe vaihdettu opintojen seurantajärjestelmästä Yatzy peliin. 
 
-Yritän saada varmuuskopion-kansion poistettua jossain välissä.
+Varmuuskopio-kansio ei lähde pois kulumallakaan.
