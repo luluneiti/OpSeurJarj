@@ -1,19 +1,21 @@
-package sovelluslogiikka;
+package sovelluslogiikka.pelaaja;
 
+import sovelluslogiikka.pelaaja.Pelaajat;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+public class PelaajatTesti {
 
+    private static Pelaajat pelaajat1 = new Pelaajat();
 
-public class PelaajatTestit {
-
-    public PelaajatTestit() {
+    public PelaajatTesti() {
     }
 
     @BeforeClass
@@ -39,8 +41,7 @@ public class PelaajatTestit {
     @Test
     public void annaPelaajatTyhjaLista() {
 
-        Pelaajat pelaajat = new Pelaajat();
-        List<Pelaaja> pelaajaLista = pelaajat.annaPelaajat();
+        List<String> pelaajaLista = pelaajat1.annaPelaajat();
         if (pelaajaLista != null) {
             fail();
         }
@@ -53,11 +54,10 @@ public class PelaajatTestit {
     @Test
     public void annaPelaajat() {
 
-        Pelaajat pelaajat2 = new Pelaajat();
-        pelaajat2.lisaaPelaaja("Ulla");
-        pelaajat2.lisaaPelaaja("Allu");
-        List<Pelaaja> pelaajaLista = pelaajat2.annaPelaajat();
-        assertEquals(2, pelaajaLista.size());
+        pelaajat1.lisaaPelaaja("Anssi");
+        pelaajat1.lisaaPelaaja("Erkki");
+        List<String> pelaajaLista = pelaajat1.annaPelaajat();
+        assertTrue(pelaajaLista.contains("Anssi") && pelaajaLista.contains("Erkki"));
 
     }
 }

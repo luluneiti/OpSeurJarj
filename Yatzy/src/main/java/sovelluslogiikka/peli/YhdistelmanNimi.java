@@ -1,4 +1,4 @@
-package sovelluslogiikka;
+package sovelluslogiikka.peli;
 
 /**
  * YhdiselmanNimi tarjoaa käytettäviss olevien yhdistelmien nimet muiden käyttöön

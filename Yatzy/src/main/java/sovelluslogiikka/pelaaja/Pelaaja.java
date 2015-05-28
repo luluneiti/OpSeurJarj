@@ -1,4 +1,4 @@
-package sovelluslogiikka;
+package sovelluslogiikka.pelaaja;
 
 /**
  * Pelaaja luokka tarjoaa tiedot ja palvelut pelaajan tietojen tallentamiseen

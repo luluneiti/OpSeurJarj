@@ -1,4 +1,4 @@
-package sovelluslogiikka;
+package sovelluslogiikka.peli;
 
 import java.util.ArrayList;
 

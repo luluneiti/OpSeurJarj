@@ -1,4 +1,4 @@
-package sovelluslogiikka;
+package sovelluslogiikka.peli;
 
 /**
  * Yhdistelma tarjoaa tiedot ja palvelut yhdistelmien tallentamiseen
@@ -7,7 +7,6 @@ package sovelluslogiikka;
 public class Yhdistelma {
 
     private YhdistelmanNimi nimi;
-    private int jarjestysNumero; //ei toistaiseksi käytössä
     private int pisteet;
 
     public Yhdistelma(YhdistelmanNimi yhdistemanNimi) {

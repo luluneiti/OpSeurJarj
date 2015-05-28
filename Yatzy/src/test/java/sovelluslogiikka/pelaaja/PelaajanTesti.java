@@ -1,5 +1,6 @@
-package sovelluslogiikka;
+package sovelluslogiikka.pelaaja;
 
+import sovelluslogiikka.pelaaja.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -7,9 +8,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class PelaajanTestit {
+public class PelaajanTesti {
 
-    public PelaajanTestit() {
+    public PelaajanTesti() {
     }
 
     @BeforeClass

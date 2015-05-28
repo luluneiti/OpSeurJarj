@@ -1,4 +1,4 @@
-package sovelluslogiikka;
+package sovelluslogiikka.peli;
 
 /**
  * Noppa on toistaiseksi kuusisivuinen arpakuutio, joka arpoo uuden lukeman pyydettäessä

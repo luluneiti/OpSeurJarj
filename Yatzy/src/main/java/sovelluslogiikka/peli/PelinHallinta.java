@@ -1,8 +1,9 @@
-package sovelluslogiikka;
+package sovelluslogiikka.peli;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import sovelluslogiikka.pelaaja.Pelaajat;
 
 /**
  * Pelihallinta luokka hallinnoi pelaajien noppia ja yhdistelmiä sskä hallinnoi
@@ -14,8 +15,8 @@ public class PelinHallinta {
     private static int maxkierroslkm;
     private static PeliMuunnelma peli;
     private static Pelaajat pelaajienHallinta = new Pelaajat();
-    private static List<Pelaaja> pelaajaLista;
-    private static HashMap<String, ArrayList<Noppa>> pelaajienNopat;
+    private static List<String> pelaajanimiLista;
+    private static HashMap<String, ArrayList<Noppa>> pelaajienNopat;  //voi olla vain yksi peli käynnissä!
     private static HashMap<String, ArrayList<Yhdistelma>> pelaajienYhdistelmat;
 
     /**
@@ -28,21 +29,17 @@ public class PelinHallinta {
 
         kierroslkm = 1;
 
-        try {
-            if (muunnelma == null || !muunnelma.equalsIgnoreCase("pakkojatsi")) {
-                throw new IllegalArgumentException("Antamasi pelimuunnelma ei ole käytettävissä");
-            }
-            if (muunnelma.equalsIgnoreCase("pakkojatsi")) {
-                peli = new Pakkojatsi();
-                maxkierroslkm = peli.annaKierroksienMaara();
+        if (muunnelma == null || !muunnelma.equalsIgnoreCase("pakkojatsi")) {
+            throw new IllegalArgumentException("Antamasi pelimuunnelma ei ole käytettävissä"); //toistaiseksi poikkeus tässä
+        }
+        if (muunnelma.equalsIgnoreCase("pakkojatsi")) {
+            peli = new Pakkojatsi();
+            maxkierroslkm = peli.annaKierroksienMaara();
 
-                pelaajaLista = pelaajienHallinta.annaPelaajat();
-                luoPelaajienNopat();
-                luoPelaajienYhdistelmat();
+            pelaajanimiLista = pelaajienHallinta.annaPelaajat();
+            luoPelaajienNopat();
+            luoPelaajienYhdistelmat();
 
-            }
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Antamasi pelimuunnelma ei ole käytettävissä");
         }
 
     }
@@ -53,13 +50,11 @@ public class PelinHallinta {
      */
     private static void luoPelaajienNopat() {
 
-        pelaajienNopat = new HashMap<String, ArrayList<Noppa>>();
-        ArrayList<Noppa> nopat = new ArrayList<Noppa>();
+        pelaajienNopat = new HashMap<>();
 
-        for (Pelaaja pelaaja : pelaajaLista) {
-            nopat = peli.luoNopat();
-            //System.out.println(nopat.size());
-            pelaajienNopat.put(pelaaja.annaNimi(), nopat);
+        for (String pelaajanimi : pelaajanimiLista) {
+            ArrayList<Noppa> nopat = peli.luoNopat();
+            pelaajienNopat.put(pelaajanimi, nopat);
 
         }
 
@@ -71,13 +66,11 @@ public class PelinHallinta {
      */
     private static void luoPelaajienYhdistelmat() {
 
-        pelaajienYhdistelmat = new HashMap<String, ArrayList<Yhdistelma>>();
-        ArrayList<Yhdistelma> yhdistelmat = new ArrayList<Yhdistelma>();
+        pelaajienYhdistelmat = new HashMap<>();
 
-        for (Pelaaja pelaaja : pelaajaLista) {
-            yhdistelmat = peli.luoYhdistelmat();
-            //System.out.println(yhdistelmat.size());
-            pelaajienYhdistelmat.put(pelaaja.annaNimi(), yhdistelmat);
+        for (String pelaajanimi : pelaajanimiLista) {
+            ArrayList<Yhdistelma> yhdistelmat = peli.luoYhdistelmat();
+            pelaajienYhdistelmat.put(pelaajanimi, yhdistelmat);
 
         }
 
@@ -93,8 +86,8 @@ public class PelinHallinta {
 
         if (kierroslkm <= maxkierroslkm) {
 
-            ArrayList<Integer> lukemat = new ArrayList<Integer>();
             int i = 0;
+            ArrayList<Integer> lukemat = new ArrayList<Integer>();
             ArrayList<Noppa> nopat = pelaajienNopat.get(nimi);
 
             for (Noppa noppa : nopat) {
@@ -130,8 +123,6 @@ public class PelinHallinta {
         return false;
     }
 
-   
-
     /**
      * Apumetodi joka pyydettäessä ylläptää pyydetyn pelaajan pelattavan
      * yhdistelman pisteet nopan lukemien mukaisesti
@@ -154,7 +145,7 @@ public class PelinHallinta {
 
     }
 
-     /**
+    /**
      * Metodi joka palauttaa pydetyn pelaajan noppien lukemat
      *
      * @param nimi
@@ -164,7 +155,7 @@ public class PelinHallinta {
 
         if (kierroslkm <= maxkierroslkm) {
             ArrayList<Noppa> nopat = pelaajienNopat.get(nimi);
-            ArrayList<Integer> lukemat = new ArrayList<Integer>();
+            ArrayList<Integer> lukemat = new ArrayList<>();
             for (Noppa noppa : nopat) {
                 lukemat.add(noppa.annaLukema());
             }
@@ -174,6 +165,7 @@ public class PelinHallinta {
             throw new IllegalArgumentException("Peli on loppu");
         }
     }
+
     /**
      * Metodi joka antaa pyydetyn pelaajan pelattavan yhdistelman pisteet
      *
@@ -183,7 +175,7 @@ public class PelinHallinta {
     public int annaPelaajanViimeisimmanYHdistelmanPisteet(String nimi) {
 
         YhdistelmanNimi pelattavaYhd = peli.annaPelattavaYhdistelma(kierroslkm);
-        System.out.print(pelattavaYhd + ": ");
+        //System.out.print(pelattavaYhd + ": "); //sout pois
         int pist = 0;
         ArrayList<Yhdistelma> pelaajanYhd = pelaajienYhdistelmat.get(nimi);
 
@@ -207,15 +199,15 @@ public class PelinHallinta {
         int kolmaskierroKaikilla = 0;
         boolean kolmaskierrosPelaajalla;
 
-        for (Pelaaja pelaaja : pelaajaLista) {
+        for (String pelaajanimi : pelaajanimiLista) {
 
             kolmaskierrosPelaajalla = false;
-            ArrayList<Noppa> nopat = pelaajienNopat.get(pelaaja.annaNimi());
+            ArrayList<Noppa> nopat = pelaajienNopat.get(pelaajanimi);
 
             for (Noppa noppa : nopat) {
 
                 if (noppa.annaKierroslkm() == 1) { //toistaiseksi ei voi heittä kuin kerran 
-                    //System.out.print(noppa.annaKierroslkm());
+                   
                     kolmaskierrosPelaajalla = true;
                 }
             }
@@ -225,7 +217,7 @@ public class PelinHallinta {
 
         }
 
-        if (kolmaskierroKaikilla == pelaajaLista.size() && kierroslkm <= maxkierroslkm + 1) {
+        if (kolmaskierroKaikilla == pelaajanimiLista.size() && kierroslkm <= maxkierroslkm + 1) {
             kierroslkm++;                                   //KIERRO VOI VAIHTUA MYÖS ENNEN KUIN HEITETTY KOLME KERTAA-> PELAAJA PAINAA LOPETA PAINIKETTA!
             nollaaPelaajienNoppienKierroslkm();
         }
@@ -238,9 +230,9 @@ public class PelinHallinta {
      */
     private static void nollaaPelaajienNoppienKierroslkm() {
 
-        for (Pelaaja pelaaja : pelaajaLista) {
+        for (String pelaajanimi : pelaajanimiLista) {
 
-            ArrayList<Noppa> nopat = pelaajienNopat.get(pelaaja.annaNimi());
+            ArrayList<Noppa> nopat = pelaajienNopat.get(pelaajanimi);
 
             for (Noppa noppa : nopat) {
 
@@ -258,22 +250,22 @@ public class PelinHallinta {
      * @return nimi
      */
     public String julistavoittaja() {
-        int i = 0;
 
-        HashMap<String, Integer> kokonaisPisteet = new HashMap<String, Integer>();
-        for (Pelaaja pelaaja : pelaajaLista) {
-            ArrayList<Yhdistelma> pelaajanYhd = pelaajienYhdistelmat.get(pelaaja.annaNimi());
+        HashMap<String, Integer> pelaajienKokonaispisteet = new HashMap<>();
+
+        for (String pelaajanimi : pelaajanimiLista) {
+            ArrayList<Yhdistelma> pelaajanYhd = pelaajienYhdistelmat.get(pelaajanimi);
             int pist = peli.laskeKokonaisPisteet(pelaajanYhd);
-            kokonaisPisteet.put(pelaaja.annaNimi(), pist);
+            pelaajienKokonaispisteet.put(pelaajanimi, pist);
+            pelaajienHallinta.tallennaPelaaja(pelaajanimi, pist);
 
-            if (pelaaja.annaEnnatysPisteet() < pist) { //onko ok tehdä tästä luokasta
-                pelaaja.asetaEnnatysPisteet(pist);
-            }
         }
-        if (pelaajaLista.size() > 1) {
-            return etsiKorkeimmatPisteet(kokonaisPisteet);
+
+        if (pelaajanimiLista.size() > 1) {
+            return etsiKorkeimmatPisteet(pelaajienKokonaispisteet);
+
         } else {
-            return "ohjelma kesken, pitäisi tarkistaa ylittääkö omat pisteet! mutta nehän jo päivitettiin....";
+            return "Yksin pelatessa ei ole voittajaa";
         }
     }
 
@@ -288,9 +280,9 @@ public class PelinHallinta {
         String voittaja = "";
         int korkein = 0;
         for (String avain : pisteet.keySet()) {
-            if (pisteet.get(avain) > korkein) {
+            if (pisteet.get(avain) >= korkein) { //entä jos pelaajilla samat pisteet??? tasapeli!
                 korkein = pisteet.get(avain);
-                voittaja = avain;
+                voittaja = voittaja+avain;
             }
 
         }

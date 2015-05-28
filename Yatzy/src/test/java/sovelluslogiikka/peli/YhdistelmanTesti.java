@@ -1,5 +1,7 @@
-package sovelluslogiikka;
+package sovelluslogiikka.peli;
 
+import sovelluslogiikka.peli.YhdistelmanNimi;
+import sovelluslogiikka.peli.Yhdistelma;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

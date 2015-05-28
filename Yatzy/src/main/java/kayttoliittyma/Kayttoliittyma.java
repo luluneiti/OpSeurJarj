@@ -1,9 +1,10 @@
 package kayttoliittyma;
 
+import sovelluslogiikka.pelaaja.Pelaajat;
+import sovelluslogiikka.peli.PelinHallinta;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import sovelluslogiikka.*;
 
 public class Kayttoliittyma {
 
@@ -30,25 +31,25 @@ public class Kayttoliittyma {
         pelihall = new PelinHallinta(muunnelma);
 
         System.out.println("");
-        List<Pelaaja> pelaajat = pelaajaHallinta.annaPelaajat(); //tekee tulevaisuudessa omat nopat ja muut käyttöliitymä komponentit
+        List<String> pelaajat = pelaajaHallinta.annaPelaajat(); //tekee tulevaisuudessa omat nopat ja muut käyttöliitymä komponentit
 
         int[] indeksit = {0, 1, 2, 3, 4}; //toistaiseksi heitetään kaikkia noppia
 
         boolean jatketaanko = true;
 
         while (jatketaanko) {
-            for (Pelaaja pelaaja : pelaajat) {
+            for (String pelaajanimi : pelaajat) {
 
-                System.out.print(pelaaja.annaNimi() + ": ");
-                pelihall.heitaPelaajanNoppia(pelaaja.annaNimi(), indeksit);
-                ArrayList<Integer> lukemat = pelihall.annaPelaajanNoppienLukemat(pelaaja.annaNimi());
+                System.out.print(pelaajanimi + ": ");
+                pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
+                ArrayList<Integer> lukemat = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
                 for (Integer lukema : lukemat) {
                     System.out.print(lukema);
                 }
 
                 System.out.println("");
 
-                System.out.println(pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(pelaaja.annaNimi())); //tulevaisuudessa näytetään vasta kun lopettaa heittämisen
+                System.out.println(pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(pelaajanimi)); //tulevaisuudessa näytetään vasta kun lopettaa heittämisen
 
             }
 
