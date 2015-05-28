@@ -7,3 +7,8 @@
 * **19.5.2015** 5 h Pit raportit, toteutus
 * **20.5.2015** 7 h Toteutus ja testitapaukset, pit raportit, palautuksen teko
 * **21.5.2015** 3 h Palautuksen jatkaminen
+* **23.5.2015** 1 h Korjattavien kohtien etsiminen
+* **24.5.2015** 2 h Korjattavien kohtien etsiminen
+* **26.5.2015** 4 h Korjaukset ja lisätoiminnallisuuksia
+* **27.5.2015** 3 h Lisätoiminnallisuuksia ja testin korjauksia
+* **28.5.2015** 2 h Testien korjauksia ja palautus
