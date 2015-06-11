@@ -19,5 +19,5 @@
 * **2.6.2015** 5 h Käyttöliittymän testaus, virheiden metsästys ja korjaus, sekvensikaavioiden jatkaminen
 * **8.6.2015** 6 h Pelaajien hallinta ikkunan lisääminen ja testaus
 * **9.6.2015** 6 h Pelaajien hallinta ikkunan jatkaminen, virheiden metsästys ja testaus
-* **10.6.2015** 1 h Sekvensiokaavioiden päivitys ja uuden luonti, katselmoitavaan projektiin tutustuminen
+* **10.6.2015** 3 h Sekvensiokaavioiden päivitys ja uuden luonti, katselmoitavaan projektiin tutustuminen
 * **11.6.2015** 7 h Käyttöliittymän siistiminen, dokujen päivitys ja palautus
