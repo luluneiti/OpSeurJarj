@@ -9,9 +9,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class YhdistelmanTesti {
+public class YhdistelmanTest {
 
-    public YhdistelmanTesti() {
+    public YhdistelmanTest() {
     }
 
     @BeforeClass

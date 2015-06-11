@@ -1,6 +1,6 @@
 package sovelluslogiikka.pelaaja;
 
-import sovelluslogiikka.pelaaja.Pelaajat;
+import sovelluslogiikka.pelaaja.PelaajienHallinta;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,11 +11,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class PelaajatTesti {
+public class PelaajienHallintaTest {
 
-    private static Pelaajat pelaajat1 = new Pelaajat();
+    private static PelaajienHallinta pelaajat1 = new PelaajienHallinta();
 
-    public PelaajatTesti() {
+    public PelaajienHallintaTest() {
     }
 
     @BeforeClass
@@ -41,23 +41,16 @@ public class PelaajatTesti {
     @Test
     public void annaPelaajatTyhjaLista() {
 
-        List<String> pelaajaLista = pelaajat1.annaPelaajat();
+        List<String> pelaajaLista = pelaajat1.annaValitutPelaajat();
         if (pelaajaLista != null) {
             fail();
         }
 
     }
 
-    /**
-     * annaPelaajat metodin testi
-     */
-    @Test
-    public void annaPelaajat() {
+   
 
-        pelaajat1.lisaaPelaaja("Anssi");
-        pelaajat1.lisaaPelaaja("Erkki");
-        List<String> pelaajaLista = pelaajat1.annaPelaajat();
-        assertTrue(pelaajaLista.contains("Anssi") && pelaajaLista.contains("Erkki"));
+   
 
-    }
+   
 }

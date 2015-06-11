@@ -1,5 +1,6 @@
 package sovelluslogiikka.pelaaja;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +9,23 @@ import java.util.List;
  * luokille
  *
  */
-public class Pelaajat {
+public class PelaajienHallinta {
 
-    private static List<Pelaaja> pelaajat = new ArrayList<>(); //voi olla vain yksi peli käynnissä!
+    private static List<Pelaaja> kaikkiPelaajat = new ArrayList<>();
+    private static List<Pelaaja> valitutPelaajat = new ArrayList<>();
     private static ArrayList<String> ennatyksenParantajat = new ArrayList<>();
+    private static TiedostonHallinta tiedostohall = new TiedostonHallinta();
+    private static String tiednimi = "pelaajat";
+
+    public PelaajienHallinta() {
+
+        kaikkiPelaajat = tiedostohall.lueTiedostosta(tiednimi);
+       /* for (Pelaaja pel : kaikkiPelaajat) {
+            System.out.println("luettu tiedostosta: " + pel.annaNimi() + ", " + pel.annaEnnatysPisteet());
+
+        }*/
+
+    }
 
     /**
      * Metodi jolla lisätään pelaaja
@@ -21,13 +35,12 @@ public class Pelaajat {
      */
     public void lisaaPelaaja(String nimi) {
 
-        for (Pelaaja pelaaja : pelaajat) {
+        for (Pelaaja pelaaja : kaikkiPelaajat) {
             if (pelaaja.annaNimi().equals(nimi)) {
-                throw new IllegalArgumentException("Pelaaja on jo olemassa"); //toistaiseksi poikkeus tässä
+                throw new IllegalArgumentException("Pelaaja on jo olemassa. Et voi lisatä uudelleen. ");
             }
-
         }
-        pelaajat.add(new Pelaaja(nimi));
+        kaikkiPelaajat.add(new Pelaaja(nimi));
 
     }
 
@@ -36,15 +49,35 @@ public class Pelaajat {
      *
      * @return kaikki pelaajat
      */
-    public List<String> annaPelaajat() {
-        if (pelaajat.isEmpty()) {
+    public List<String> annaValitutPelaajat() {
+
+        if (valitutPelaajat.isEmpty()) {
             return null;
         }
         List<String> kopio = new ArrayList<>();
-        for (Pelaaja pelaaja : pelaajat) {
+        for (Pelaaja pelaaja : valitutPelaajat) {
             kopio.add(pelaaja.annaNimi());
         }
         return kopio;
+
+    }
+
+    /**
+     * Metodi joka palautta pelin pelaajat
+     *
+     * @return kaikki pelaajat
+     */
+    public List<String> annaKaikkiPelaajat() {
+
+        if (kaikkiPelaajat.isEmpty()) {
+            return null;
+        }
+        List<String> kopio = new ArrayList<>();
+        for (Pelaaja pelaaja : kaikkiPelaajat) {
+            kopio.add(pelaaja.annaNimi());
+        }
+        return kopio;
+
     }
 
     /**
@@ -57,9 +90,7 @@ public class Pelaajat {
 
         String paluu = "";
         for (String nimi : ennatyksenParantajat) {
-
-            paluu = nimi + " ";
-
+            paluu = paluu + nimi + " ";
         }
 
         return paluu;
@@ -75,27 +106,65 @@ public class Pelaajat {
      * @param uudetpisteet
      */
     public void tallennaPelaaja(String nimi, int uudetpisteet) {
-        for (Pelaaja pelaaja : pelaajat) {
-            if (uudetpisteet > pelaaja.annaEnnatysPisteet()) {
+
+        for (Pelaaja pelaaja : kaikkiPelaajat) {
+
+            if (pelaaja.annaNimi().equals(nimi) && uudetpisteet > pelaaja.annaEnnatysPisteet()) {
 
                 if (pelaaja.annaEnnatysPisteet() != 0) {
                     ennatyksenParantajat.add(nimi);
+                    //System.out.println("lisätään ennätyksen tekijöihin: " + pelaaja);
                 }
+
                 pelaaja.asetaEnnatysPisteet(uudetpisteet);
+                //System.out.println("päivitetään pisteitä: " + pelaaja);
 
             }
 
         }
     }
 
+    /**
+     * Metodi pelaajan ennätyspisteiden hakemiseen
+     *
+     * @param nimi
+     * @return
+     */
     public int annaPelaajanPisteet(String nimi) {
-        for (Pelaaja pelaaja : pelaajat) {
-            if (pelaaja.annaNimi().equals(nimi)) {
 
+        for (Pelaaja pelaaja : kaikkiPelaajat) {
+            if (pelaaja.annaNimi().equals(nimi)) {
                 return pelaaja.annaEnnatysPisteet();
             }
-
         }
         return -1;
+
     }
+
+    /**
+     * Metodi pelaajan ottamiseksi mukaan peliin
+     *
+     * @param nimi
+     */
+    public void valitsePelaajaksi(String nimi) {
+
+        valitutPelaajat.add(new Pelaaja(nimi));
+
+    }
+
+    /**
+     * Metodi lopettamiseen ja tietojen kirjoittamiseksi tiedostoon
+     *
+     */
+    public void loppu() {
+
+        /*for (Pelaaja pel : kaikkiPelaajat) {
+            System.out.println("kirjoitetaan tiedostoon: " + pel.annaNimi() + ", " + pel.annaEnnatysPisteet());
+
+        }*/
+
+        tiedostohall.kirjoitaTiedostoon(tiednimi, kaikkiPelaajat);
+
+    }
+
 }

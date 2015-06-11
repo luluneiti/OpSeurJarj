@@ -1,26 +1,38 @@
 package sovelluslogiikka.peli;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import sovelluslogiikka.pelaaja.Pelaajat;
+import sovelluslogiikka.pelaaja.PelaajienHallinta;
 
-public class PelinHallintaTesti {
+public class PelinHallintaTest2 {
 
     private static PelinHallinta pelihall;
-    private static Pelaajat pelaajaHallinta = new Pelaajat();
-    private static String pelaajanimi;
+    private static PelaajienHallinta pelaajaHallinta;
+    private static String pelaajanimi1, pelaajanimi2;
     private static int i = 1;
+    private static ArrayList<Integer> indeksit = new ArrayList<>();
 
-    public PelinHallintaTesti() {
-        pelaajanimi = "Ulla" + i;
+    public PelinHallintaTest2() {
+
+        pelaajaHallinta = new PelaajienHallinta();
+
+        pelaajanimi1 = "Usko" + i;
+        pelaajanimi2 = "Aaro" + i;
         i++;
-        pelaajaHallinta.lisaaPelaaja(pelaajanimi);
-        pelihall = new PelinHallinta("pakkojatsi");
+
+        pelaajaHallinta.lisaaPelaaja(pelaajanimi1);
+        pelaajaHallinta.valitsePelaajaksi(pelaajanimi1);
+        pelaajaHallinta.lisaaPelaaja(pelaajanimi2);
+        pelaajaHallinta.valitsePelaajaksi(pelaajanimi2);
+
+        pelihall = new PelinHallinta("pakkojatsi", pelaajaHallinta);
+
     }
 
     @BeforeClass
@@ -44,142 +56,51 @@ public class PelinHallintaTesti {
      * .
      */
     @Test
-    public void HeitaPelaajanKaikkiaNoppia() {
+    public void julistaVoittaja() {
 
-        System.out.println("kaikkia");
-        int[] indeksit = {0, 1, 2, 3, 4};
-        pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-        ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-        for (Integer luku : lukemat1) {
-            System.out.print(luku);
-        }
-        System.out.println("");
-        pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-        ArrayList<Integer> lukemat2 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-        for (Integer luku : lukemat2) {
-            System.out.print(luku);
-        }
-        System.out.println("");
-        if (lukemat1.get(0) == lukemat2.get(0) && lukemat1.get(1) == lukemat2.get(1) && lukemat1.get(2) == lukemat2.get(2) && lukemat1.get(3) == lukemat2.get(3) && lukemat1.get(4) == lukemat2.get(4)) {
-            fail();
-        }
-    }
+        int summa1 = 0, summa2 = 0, indeksi = 0;
 
-    /**
-     * .
-     */
-    @Test
-    public void HeitaPelaajanOsaNoppia() {
+        indeksit.removeAll(indeksit);
+        indeksit.add(0);
+        indeksit.add(1);
+        indeksit.add(2);
+        indeksit.add(3);
+        indeksit.add(4);
 
-        System.out.println("kolmea ekaa");
-        int[] indeksit = {0, 1, 2};
+        while (indeksi <= 15) {
 
-        pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-        ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-        for (Integer luku : lukemat1) {
-            System.out.print(luku);
+            System.out.println("kierros " + indeksi);
+
+            pelihall.heitaPelaajanNoppia(pelaajanimi1, indeksit);
+            pelihall.lopetaKierros(pelaajanimi1); //heitetää vain kerran
+            summa1 = summa1 + pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(pelaajanimi1);
+            System.out.println(pelaajanimi1 + " " + summa1);
+
+            //System.out.println(pelaajanimi5);
+            pelihall.heitaPelaajanNoppia(pelaajanimi2, indeksit);
+            pelihall.lopetaKierros(pelaajanimi2); //heitetää vain kerran
+            summa2 = summa2 + pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(pelaajanimi2);
+            System.out.println(pelaajanimi2 + " " + summa2);
+
+            pelihall.tarkistaAlkaakoUusiKierros();
+
+            indeksi++;
+
         }
-        System.out.println("");
-        pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-        ArrayList<Integer> lukemat2 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-        for (Integer luku : lukemat2) {
-            System.out.print(luku);
-        }
-        System.out.println("");
-        if (lukemat1.get(3) != lukemat2.get(3) || lukemat1.get(4) != lukemat2.get(4)) {
+
+        System.out.println(summa1);
+        System.out.println(summa2);
+        String voittaja = pelihall.julistavoittaja();
+        System.out.println("voittaja: " + voittaja);
+
+        if (!voittaja.contains(pelaajanimi1) && summa1 > summa2) {
             fail();
         }
 
-    }
-
-    /**
-     * .
-     */
-    @Test
-    public void HeitaPelaajanOsaNoppia2() {
-
-        System.out.println("kahta ekaa");
-        int[] indeksit = {0, 1};
-
-        pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-        ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-        for (Integer luku : lukemat1) {
-            System.out.print(luku);
-        }
-        System.out.println("");
-        pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-        ArrayList<Integer> lukemat2 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-        for (Integer luku : lukemat2) {
-            System.out.print(luku);
-        }
-        System.out.println("");
-        if (lukemat1.get(2) != lukemat2.get(2) || lukemat1.get(3) != lukemat2.get(3) || lukemat1.get(4) != lukemat2.get(4)) {
+        if (!voittaja.contains(pelaajanimi2) && summa2 > summa1) {
             fail();
         }
 
     }
 
-    /**
-     * .
-     */
-    @Test
-    public void HeitaPelaajanOsaNoppia3() {
-
-        System.out.println("vain ekaa");
-        int[] indeksit = {0};
-
-        pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-        ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-        for (Integer luku : lukemat1) {
-            System.out.print(luku);
-        }
-        System.out.println("");
-        pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-        ArrayList<Integer> lukemat2 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-        for (Integer luku : lukemat2) {
-            System.out.print(luku);
-        }
-        System.out.println("");
-        if (lukemat1.get(1) != lukemat2.get(1) || lukemat1.get(2) != lukemat2.get(2) || lukemat1.get(3) != lukemat2.get(3) || lukemat1.get(4) != lukemat2.get(4)) {
-            fail();
-        }
-
-    }
-
-    /**
-     * .
-     */
-    @Test
-    public void annaLukemat() {
-
-        int[] indeksit = {0, 1, 2, 3, 4};
-        pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-        ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-        for (Integer luku : lukemat1) {
-            if (luku < 0 || luku > 6) {
-                fail();
-            }
-        }
-
-    }
-
-    /**
-     * .
-     */
-    @Test
-    public void annaPelaajanViimeisimmanYhdistelmanPisteet() {
-
-        int[] indeksit = {0, 1, 2, 3, 4};
-        pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-        ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-        int summa=0;
-         for (Integer luku : lukemat1) {
-            if(luku==1) {summa=summa+luku;}
-        }
-        int pist = pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(pelaajanimi);
-        assertEquals(summa, pist);
-
-    }
-
-//julista voittaja
 }

@@ -1,6 +1,6 @@
 package sovelluslogiikka.pelaaja;
 
-import sovelluslogiikka.pelaaja.Pelaajat;
+import sovelluslogiikka.pelaaja.PelaajienHallinta;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -9,11 +9,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class PelaajatTesti2 {
+public class PelaajienHallintaTest2 {
 
-    private static Pelaajat pelaajat2 = new Pelaajat();
+    private static PelaajienHallinta pelaajat2 = new PelaajienHallinta();
 
-    public PelaajatTesti2() {
+    public PelaajienHallintaTest2() {
 
     }
 
@@ -39,9 +39,9 @@ public class PelaajatTesti2 {
     @Test
     public void lisaaPelaaja() {
 
-        pelaajat2.lisaaPelaaja("Kaisa");
-         List<String> pelaajaLista = pelaajat2.annaPelaajat();
-        assertTrue(pelaajaLista.contains("Kaisa"));
+        pelaajat2.lisaaPelaaja("testi1");
+        List<String> pelaajaLista = pelaajat2.annaKaikkiPelaajat();
+        assertTrue(pelaajaLista.contains("testi1"));
 
     }
 
@@ -49,12 +49,25 @@ public class PelaajatTesti2 {
      * annaPelaajat metodin testi
      */
     @Test
-    public void annaPelaajat() {
+    public void annaKaikkiPelaajat() {
 
-        pelaajat2.lisaaPelaaja("Ella");
-        pelaajat2.lisaaPelaaja("Aino");
-        List<String> pelaajaLista = pelaajat2.annaPelaajat();
-        assertTrue(pelaajaLista.contains("Ella") && pelaajaLista.contains("Aino"));
+        pelaajat2.lisaaPelaaja("testi2");
+        pelaajat2.lisaaPelaaja("testi3");
+        List<String> pelaajaLista = pelaajat2.annaKaikkiPelaajat();
+        assertTrue(pelaajaLista.contains("testi2") && pelaajaLista.contains("testi3"));
+    }
+
+    /**
+     * annaPelaajat metodin testi
+     */
+    @Test
+    public void annaValitutPelaajat() {
+
+        pelaajat2.valitsePelaajaksi("testi2");
+        pelaajat2.valitsePelaajaksi("testi3");
+
+        List<String> pelaajaLista = pelaajat2.annaValitutPelaajat();
+        assertTrue(pelaajaLista.contains("testi2") && pelaajaLista.contains("testi3"));
     }
 
     /**
@@ -64,7 +77,7 @@ public class PelaajatTesti2 {
     public void lisaaTuplaPelaaja() {
 
         try {
-            pelaajat2.lisaaPelaaja("Aino");
+            pelaajat2.lisaaPelaaja("testi3");
             fail("Pitäisi tulla poikkeus");
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -73,16 +86,16 @@ public class PelaajatTesti2 {
         }
 
     }
-    
-       /**
+
+    /**
      * annaPelaajat metodin testi
      */
     @Test
     public void tallennaPelaaja() {
 
-        pelaajat2.lisaaPelaaja("Emma");
-        pelaajat2.tallennaPelaaja("Emma", 56);
-        assertEquals(56, pelaajat2.annaPelaajanPisteet("Emma"));
+        pelaajat2.lisaaPelaaja("testi4");
+        pelaajat2.tallennaPelaaja("testi4", 56);
+        assertEquals(56, pelaajat2.annaPelaajanPisteet("testi4"));
 
     }
 
@@ -92,12 +105,26 @@ public class PelaajatTesti2 {
     @Test
     public void annaEnnatyksenTehneet() {
 
-        pelaajat2.lisaaPelaaja("Essi");
-        pelaajat2.tallennaPelaaja("Essi", 89);
+        pelaajat2.lisaaPelaaja("testi5");
+        pelaajat2.tallennaPelaaja("testi5", 89);
         assertEquals("", pelaajat2.annaEnnatyksenTehneet());
-        pelaajat2.tallennaPelaaja("Essi", 250);
-        assertEquals("Essi ", pelaajat2.annaEnnatyksenTehneet());
+        pelaajat2.tallennaPelaaja("testi5", 101);
+        assertEquals("testi5 ", pelaajat2.annaEnnatyksenTehneet());
 
+    }
+
+    /**
+     * annaPelaajanPisteet metodin testi
+     */
+    @Test
+    public void annaPelaajanPisteet() {
+
+        pelaajat2.tallennaPelaaja("testi5", 100);
+        assertEquals(101, pelaajat2.annaPelaajanPisteet("testi5"));
+        pelaajat2.tallennaPelaaja("testi5", 150);
+        assertEquals(150, pelaajat2.annaPelaajanPisteet("testi5"));
+        pelaajat2.tallennaPelaaja("testi5", -20);
+        assertEquals(150, pelaajat2.annaPelaajanPisteet("testi5"));
     }
 
 }

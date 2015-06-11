@@ -9,11 +9,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class PakkojatsiTesti {
+public class PakkojatsiTest {
 
     private static Pakkojatsi peli = new Pakkojatsi();
 
-    public PakkojatsiTesti() {
+    public PakkojatsiTest() {
     }
 
     @BeforeClass
@@ -136,12 +136,12 @@ public class PakkojatsiTesti {
     public void summaaParinLukematPariAlussa() {
 
         ArrayList<Integer> lukemat = new ArrayList<>();
-        lukemat.add(1);
-        lukemat.add(1);
+        lukemat.add(2);
         lukemat.add(2);
         lukemat.add(3);
-        lukemat.add(4);
-        assertEquals(2, peli.laskeYhdistelmanPisteet(lukemat, 7));
+        lukemat.add(1);
+        lukemat.add(1);
+        assertEquals(4, peli.laskeYhdistelmanPisteet(lukemat, 7));
 
     }
 
@@ -189,7 +189,71 @@ public class PakkojatsiTesti {
         lukemat.add(2);
         lukemat.add(4);
         lukemat.add(4);
-        assertEquals(8, peli.laskeYhdistelmanPisteet(lukemat, 7)); //pitäisi ottaa korkein lukema??
+        assertEquals(8, peli.laskeYhdistelmanPisteet(lukemat, 7)); //pitäisi ottaa paras pari
+
+    }
+
+    /**
+     * xx metodin testi
+     */
+    @Test
+    public void summaaParinLukematMontaParia2() {
+
+        ArrayList<Integer> lukemat = new ArrayList<>();
+        lukemat.add(5);
+        lukemat.add(5);
+        lukemat.add(2);
+        lukemat.add(4);
+        lukemat.add(4);
+        assertEquals(10, peli.laskeYhdistelmanPisteet(lukemat, 7)); //pitäisi ottaa paras pari
+
+    }
+
+    /**
+     * xx metodin testi
+     */
+    @Test
+    public void summaaKahdenParinLukemat() {
+
+        ArrayList<Integer> lukemat = new ArrayList<>();
+        lukemat.add(5);
+        lukemat.add(1);
+        lukemat.add(1);     //PITÄÄKÖ OLLA VIEREKKÄIN???
+        lukemat.add(4);
+        lukemat.add(4);
+        assertEquals(10, peli.laskeYhdistelmanPisteet(lukemat, 8));
+
+    }
+
+    /**
+     * xx metodin testi
+     */
+    @Test
+    public void summaaKahdenParinLukemat2() {
+
+        ArrayList<Integer> lukemat = new ArrayList<>();
+        lukemat.add(5);
+        lukemat.add(5);
+        lukemat.add(1);     //PITÄÄKÖ OLLA VIEREKKÄIN???
+        lukemat.add(1);
+        lukemat.add(4);
+        assertEquals(12, peli.laskeYhdistelmanPisteet(lukemat, 8));
+
+    }
+    
+    /**
+     * xx metodin testi
+     */
+    @Test
+    public void summaaKahdenParinLukemat3() {
+
+        ArrayList<Integer> lukemat = new ArrayList<>();
+        lukemat.add(5);
+        lukemat.add(5);
+        lukemat.add(1);     //PITÄÄKÖ OLLA VIEREKKÄIN???
+        lukemat.add(2);
+        lukemat.add(4);
+        assertEquals(0, peli.laskeYhdistelmanPisteet(lukemat, 8));
 
     }
 
@@ -296,6 +360,22 @@ public class PakkojatsiTesti {
     public void tarkistaPienisuora2() {
 
         ArrayList<Integer> lukemat = new ArrayList<>();
+        lukemat.add(5);
+        lukemat.add(4);
+        lukemat.add(3);
+        lukemat.add(2);
+        lukemat.add(1);
+        assertEquals(0, peli.laskeYhdistelmanPisteet(lukemat, 11));
+
+    }
+
+    /**
+     * xx metodin testi
+     */
+    @Test
+    public void tarkistaPienisuora3() {
+
+        ArrayList<Integer> lukemat = new ArrayList<>();
         lukemat.add(1);
         lukemat.add(2);
         lukemat.add(2);
@@ -334,6 +414,70 @@ public class PakkojatsiTesti {
         lukemat.add(4);
         lukemat.add(5);
         assertEquals(0, peli.laskeYhdistelmanPisteet(lukemat, 12));
+
+    }
+
+    /**
+     * xx metodin testi
+     */
+    @Test
+    public void tarkistaSuurisuora3() {
+
+        ArrayList<Integer> lukemat = new ArrayList<>();
+        lukemat.add(6);
+        lukemat.add(5);
+        lukemat.add(4);
+        lukemat.add(3);
+        lukemat.add(2);
+        assertEquals(0, peli.laskeYhdistelmanPisteet(lukemat, 12));
+
+    }
+
+    /**
+     * xx metodin testi
+     */
+    @Test
+    public void tarkistaTaysikasi() {
+
+        ArrayList<Integer> lukemat = new ArrayList<>();
+        lukemat.add(1);
+        lukemat.add(1);
+        lukemat.add(3);
+        lukemat.add(3);
+        lukemat.add(3);
+        assertEquals(11, peli.laskeYhdistelmanPisteet(lukemat, 13));
+
+    }
+
+    /**
+     * xx metodin testi
+     */
+    @Test
+    public void tarkistaTaysikasi2() {
+
+        ArrayList<Integer> lukemat = new ArrayList<>();
+        lukemat.add(3);
+        lukemat.add(3);
+        lukemat.add(3);
+        lukemat.add(3);
+        lukemat.add(3);
+        assertEquals(0, peli.laskeYhdistelmanPisteet(lukemat, 13));
+
+    }
+
+    /**
+     * xx metodin testi
+     */
+    @Test
+    public void tarkistaTaysikasi3() {
+
+        ArrayList<Integer> lukemat = new ArrayList<>();
+        lukemat.add(3);
+        lukemat.add(3);
+        lukemat.add(3);
+        lukemat.add(1);
+        lukemat.add(1);
+        assertEquals(11, peli.laskeYhdistelmanPisteet(lukemat, 13));
 
     }
 
@@ -389,6 +533,22 @@ public class PakkojatsiTesti {
      * xx metodin testi
      */
     @Test
+    public void tarkistaJatsi3() {
+
+        ArrayList<Integer> lukemat = new ArrayList<>();
+        lukemat.add(1);
+        lukemat.add(1);
+        lukemat.add(1);
+        lukemat.add(1);
+        lukemat.add(1);
+        assertEquals(50, peli.laskeYhdistelmanPisteet(lukemat, 15));
+
+    }
+
+    /**
+     * xx metodin testi
+     */
+    @Test
     public void laskeKokonaisPisteet() {
 
         ArrayList<Yhdistelma> yhdistelmat = new ArrayList<>();
@@ -402,7 +562,28 @@ public class PakkojatsiTesti {
 
         }
 
-        assertEquals(14, peli.laskeKokonaisPisteet(yhdistelmat));
+        assertEquals(15, peli.laskeKokonaisPisteet(yhdistelmat));
+
+    }
+    
+     /**
+     * xx metodin testi
+     */
+    @Test
+    public void laskeKokonaisPisteet2() {
+
+        ArrayList<Yhdistelma> yhdistelmat = new ArrayList<>();
+
+        for (int i = 0; i < 15; i++) {
+            yhdistelmat.add(new Yhdistelma(YhdistelmanNimi.values()[i]));
+        }
+
+        for (Yhdistelma yhdistelma : yhdistelmat) {
+            yhdistelma.asetaPisteet(0);
+
+        }
+
+        assertEquals(0, peli.laskeKokonaisPisteet(yhdistelmat));
 
     }
 
@@ -423,7 +604,7 @@ public class PakkojatsiTesti {
 
         }
 
-        assertEquals(260, peli.laskeKokonaisPisteet(yhdistelmat));
+        assertEquals(275, peli.laskeKokonaisPisteet(yhdistelmat));
 
     }
 
@@ -471,12 +652,12 @@ public class PakkojatsiTesti {
         assertEquals(YhdistelmanNimi.neloset, peli.annaPelattavaYhdistelma(4));
         assertEquals(YhdistelmanNimi.viitoset, peli.annaPelattavaYhdistelma(5));
         assertEquals(YhdistelmanNimi.kuutoset, peli.annaPelattavaYhdistelma(6));
-        assertEquals(YhdistelmanNimi.yksiPari, peli.annaPelattavaYhdistelma(7));
-        assertEquals(YhdistelmanNimi.kaksiParia, peli.annaPelattavaYhdistelma(8));
+        assertEquals(YhdistelmanNimi.yksi_pari, peli.annaPelattavaYhdistelma(7));
+        assertEquals(YhdistelmanNimi.kaksi_paria, peli.annaPelattavaYhdistelma(8));
         assertEquals(YhdistelmanNimi.kolmoisluku, peli.annaPelattavaYhdistelma(9));
         assertEquals(YhdistelmanNimi.neloisluku, peli.annaPelattavaYhdistelma(10));
-        assertEquals(YhdistelmanNimi.pieniSuora, peli.annaPelattavaYhdistelma(11));
-        assertEquals(YhdistelmanNimi.suuriSuora, peli.annaPelattavaYhdistelma(12));
+        assertEquals(YhdistelmanNimi.pieni_suora, peli.annaPelattavaYhdistelma(11));
+        assertEquals(YhdistelmanNimi.suuri_suora, peli.annaPelattavaYhdistelma(12));
         assertEquals(YhdistelmanNimi.tayskasi, peli.annaPelattavaYhdistelma(13));
         assertEquals(YhdistelmanNimi.sattuma, peli.annaPelattavaYhdistelma(14));
         assertEquals(YhdistelmanNimi.yatzy, peli.annaPelattavaYhdistelma(15));

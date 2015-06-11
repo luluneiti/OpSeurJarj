@@ -1,8 +1,9 @@
 package sovelluslogiikka.peli;
 
 /**
- * Noppa on toistaiseksi kuusisivuinen arpakuutio, joka arpoo uuden lukeman pyydettäessä
- * Jos nopan sivujen määrä annettaisiin konstruktorissa, niin sivujen määrä voisi olla jokin muukin kuin kuusi.
+ * Noppa on toistaiseksi kuusisivuinen arpakuutio, joka arpoo uuden lukeman
+ * pyydettäessä Jos nopan sivujen määrä annettaisiin konstruktorissa, niin
+ * sivujen määrä voisi olla jokin muukin kuin kuusi.
  */
 public class Noppa {
 
@@ -36,7 +37,7 @@ public class Noppa {
      * @return arvottu luku 1-6
      */
     private static int arvoUusiLukema() {
-        int lukema = (int) (Math.random() * 6 + 1);
+        int lukema = (int) (Math.random() * 6 + 1); //toistaiseksi oletettu, että noppa on kuusikulmainen!
         return lukema;
     }
 
@@ -47,6 +48,15 @@ public class Noppa {
      */
     public int annaKierroslkm() {
         return this.noppaKierroslkm;
+    }
+
+    /**
+     * Metodi, joka kertoo kuinka monta kertaa noppaa on heitetty
+     *
+     * @return noppaKierroslkm
+     */
+    public void asetaKierroslkm(int kierroslkm) {
+        this.noppaKierroslkm = kierroslkm;
     }
 
     /**

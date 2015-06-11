@@ -1,9 +1,11 @@
 package sovelluslogiikka.pelaaja;
 
+import java.io.Serializable;
+
 /**
  * Pelaaja luokka tarjoaa tiedot ja palvelut pelaajan tietojen tallentamiseen
  */
-public class Pelaaja {
+public class Pelaaja implements Serializable {
 
     private String nimi;
     private int ennatyspisteet;
@@ -64,6 +66,11 @@ public class Pelaaja {
 
         return this.nimi.equals(verrattava.annaNimi());
 
+    }
+
+    @Override
+    public String toString() {
+        return this.nimi;
     }
 
 }

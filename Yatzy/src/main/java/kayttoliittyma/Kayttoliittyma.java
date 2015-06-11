@@ -1,6 +1,6 @@
 package kayttoliittyma;
 
-import sovelluslogiikka.pelaaja.Pelaajat;
+import sovelluslogiikka.pelaaja.PelaajienHallinta;
 import sovelluslogiikka.peli.PelinHallinta;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,59 +8,60 @@ import java.util.Scanner;
 
 public class Kayttoliittyma {
 
-    private static Pelaajat pelaajaHallinta = new Pelaajat();
+    private static PelaajienHallinta pelaajaHallinta = new PelaajienHallinta();
     private static PelinHallinta pelihall;
     private static Scanner lukija = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        System.out.println("Anna pelaajan nimi");
-        String nimi = lukija.nextLine();
+        String nimi1 = "Ärre";
+        String nimi2 = "Örre";
+        pelaajaHallinta.lisaaPelaaja(nimi1);
+        pelaajaHallinta.valitsePelaajaksi(nimi1);
+        pelaajaHallinta.lisaaPelaaja(nimi2);
+        pelaajaHallinta.valitsePelaajaksi(nimi2);
 
-        while (!nimi.isEmpty()) {
+        pelihall = new PelinHallinta("pakkojatsi", pelaajaHallinta);
 
-            pelaajaHallinta.lisaaPelaaja(nimi);
+        ArrayList<Integer> indeksit = new ArrayList<>();
+        indeksit.add(1);
+        indeksit.add(2);
+        indeksit.add(3);
+        indeksit.add(4);
+        indeksit.add(5);
 
-            System.out.println("Anna pelaajan nimi");
-            nimi = lukija.nextLine();
-        }
+        while (pelihall.annaKierroslkm() <= 15) {
 
-        System.out.println("Anna pelattavan muunnelman nimi");
-        String muunnelma = lukija.nextLine();
-
-        pelihall = new PelinHallinta(muunnelma);
-
-        System.out.println("");
-        List<String> pelaajat = pelaajaHallinta.annaPelaajat(); //tekee tulevaisuudessa omat nopat ja muut käyttöliitymä komponentit
-
-        int[] indeksit = {0, 1, 2, 3, 4}; //toistaiseksi heitetään kaikkia noppia
-
-        boolean jatketaanko = true;
-
-        while (jatketaanko) {
-            for (String pelaajanimi : pelaajat) {
-
-                System.out.print(pelaajanimi + ": ");
-                pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-                ArrayList<Integer> lukemat = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-                for (Integer lukema : lukemat) {
-                    System.out.print(lukema);
-                }
-
-                System.out.println("");
-
-                System.out.println(pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(pelaajanimi)); //tulevaisuudessa näytetään vasta kun lopettaa heittämisen
-
+            System.out.print(nimi1 + " : ");
+            pelihall.heitaPelaajanNoppia(nimi1, indeksit);
+            ArrayList<Integer> lukemat = pelihall.annaPelaajanNoppienLukemat(nimi1);
+            System.out.print(pelihall.annaPelattavaYhdistelma());
+            for (Integer lukema : lukemat) {
+                System.out.print(lukema);
             }
+            pelihall.lopetaKierros(nimi1); //heitetää vain kerran
+            System.out.println("");
+            System.out.println(pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(nimi1));
 
-            System.out.println("Jatketaanko (K/E)?");
-            String komento = lukija.nextLine();
-            if (komento.equals("E") || komento.equals("e")) {
-                jatketaanko = false;
+            System.out.print(nimi2 + ": ");
+            pelihall.heitaPelaajanNoppia(nimi2, indeksit);
+            ArrayList<Integer> lukemat2 = pelihall.annaPelaajanNoppienLukemat(nimi2);
+            System.out.print(pelihall.annaPelattavaYhdistelma());
+            for (Integer lukema : lukemat2) {
+                System.out.print(lukema);
             }
+            pelihall.lopetaKierros(nimi2); //heitetää vain kerran
+            System.out.println("");
+            System.out.println(pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(nimi2));
+
+            pelihall.tarkistaAlkaakoUusiKierros();
+
         }
 
         System.out.println("Voittaja on: " + pelihall.julistavoittaja() + ". Onneksti olkoon!");
+        System.out.println(pelihall.annaPelaajanKokonaisPisteet(nimi1));
+        System.out.println(pelihall.annaPelaajanKokonaisPisteet(nimi2));
+
     }
 
 }

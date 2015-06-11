@@ -8,9 +8,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class PelaajanTesti {
+public class PelaajanTest {
 
-    public PelaajanTesti() {
+    public PelaajanTest() {
     }
 
     @BeforeClass
@@ -34,8 +34,8 @@ public class PelaajanTesti {
      */
     @Test
     public void pelaajanLuonti() {
-        Pelaaja pelaaja = new Pelaaja("Terttu");
-        assertEquals(pelaaja.annaNimi(), "Terttu");
+        Pelaaja pelaaja = new Pelaaja("pelaaja0");
+        assertEquals(pelaaja.annaNimi(), "pelaaja0");
     }
 
     /**

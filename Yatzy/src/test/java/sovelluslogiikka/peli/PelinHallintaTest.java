@@ -7,20 +7,27 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import sovelluslogiikka.pelaaja.Pelaajat;
+import sovelluslogiikka.pelaaja.PelaajienHallinta;
 
-public class PelinHallintaTesti {
+public class PelinHallintaTest {
 
     private static PelinHallinta pelihall;
-    private static Pelaajat pelaajaHallinta = new Pelaajat();
-    private static String pelaajanimi;
+    private static PelaajienHallinta pelaajaHallinta;
+    private static String pelaajanimi, pelaajanimi2;
     private static int i = 1;
 
-    public PelinHallintaTesti() {
-        pelaajanimi = "Ulla" + i;
+    private static ArrayList<Integer> indeksit = new ArrayList<>();
+
+    public PelinHallintaTest() {
+        pelaajaHallinta = new PelaajienHallinta();
+        pelaajanimi = "Erkki" + i;
+        pelaajanimi2 = "Esko" + i;
         i++;
         pelaajaHallinta.lisaaPelaaja(pelaajanimi);
-        pelihall = new PelinHallinta("pakkojatsi");
+        pelaajaHallinta.valitsePelaajaksi(pelaajanimi);
+        pelaajaHallinta.lisaaPelaaja(pelaajanimi2);
+        pelaajaHallinta.valitsePelaajaksi(pelaajanimi2);
+        pelihall = new PelinHallinta("pakkojatsi", pelaajaHallinta);
     }
 
     @BeforeClass
@@ -44,10 +51,15 @@ public class PelinHallintaTesti {
      * .
      */
     @Test
-    public void HeitaPelaajanKaikkiaNoppia() {
+    public void heitaPelaajanKaikkiaNoppia() {
 
         System.out.println("kaikkia");
-        int[] indeksit = {0, 1, 2, 3, 4};
+        indeksit.removeAll(indeksit);
+        indeksit.add(0);
+        indeksit.add(1);
+        indeksit.add(2);
+        indeksit.add(3);
+        indeksit.add(4);
         pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
         ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
         for (Integer luku : lukemat1) {
@@ -69,10 +81,13 @@ public class PelinHallintaTesti {
      * .
      */
     @Test
-    public void HeitaPelaajanOsaNoppia() {
+    public void heitaPelaajanOsaNoppia() {
 
-        System.out.println("kolmea ekaa");
-        int[] indeksit = {0, 1, 2};
+        System.out.println("kolmea ekaa heitetään");
+        indeksit.removeAll(indeksit);
+        indeksit.add(0);
+        indeksit.add(1);
+        indeksit.add(2);
 
         pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
         ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
@@ -96,10 +111,12 @@ public class PelinHallintaTesti {
      * .
      */
     @Test
-    public void HeitaPelaajanOsaNoppia2() {
+    public void heitaPelaajanOsaNoppia2() {
 
-        System.out.println("kahta ekaa");
-        int[] indeksit = {0, 1};
+        System.out.println("kahta ekaa heitetään");
+        indeksit.removeAll(indeksit);
+        indeksit.add(0);
+        indeksit.add(1);
 
         pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
         ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
@@ -123,10 +140,11 @@ public class PelinHallintaTesti {
      * .
      */
     @Test
-    public void HeitaPelaajanOsaNoppia3() {
+    public void heitaPelaajanOsaNoppia3() {
 
-        System.out.println("vain ekaa");
-        int[] indeksit = {0};
+        System.out.println("vain ekaa heitetään");
+        indeksit.removeAll(indeksit);
+        indeksit.add(0);
 
         pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
         ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
@@ -152,7 +170,12 @@ public class PelinHallintaTesti {
     @Test
     public void annaLukemat() {
 
-        int[] indeksit = {0, 1, 2, 3, 4};
+        indeksit.add(0);
+        indeksit.add(1);
+        indeksit.add(2);
+        indeksit.add(3);
+        indeksit.add(4);
+
         pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
         ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
         for (Integer luku : lukemat1) {
@@ -169,17 +192,96 @@ public class PelinHallintaTesti {
     @Test
     public void annaPelaajanViimeisimmanYhdistelmanPisteet() {
 
-        int[] indeksit = {0, 1, 2, 3, 4};
+        indeksit.add(0);
+        indeksit.add(1);
+        indeksit.add(2);
+        indeksit.add(3);
+        indeksit.add(4);
+
         pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
         ArrayList<Integer> lukemat1 = pelihall.annaPelaajanNoppienLukemat(pelaajanimi);
-        int summa=0;
-         for (Integer luku : lukemat1) {
-            if(luku==1) {summa=summa+luku;}
+        int summa = 0;
+        for (Integer luku : lukemat1) {
+            if (luku == 1) {
+                summa = summa + luku;
+            }
         }
         int pist = pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(pelaajanimi);
         assertEquals(summa, pist);
 
     }
+    
+    /**
+     * .
+     */
+    @Test
+    public void onkoPelaajanVuoroPaattymassa() {
 
-//julista voittaja
+        indeksit.add(0);
+        indeksit.add(1);
+        indeksit.add(2);
+        indeksit.add(3);
+        indeksit.add(4);
+
+        pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
+        
+        assertEquals(false, pelihall.onkoPelaajanVuoroPaattymassa(pelaajanimi));
+
+    }
+    
+     /**
+     * .
+     */
+    @Test
+    public void lopetaVuoro() {
+
+        pelihall.lopetaKierros(pelaajanimi);
+        assertEquals(true, pelihall.onkoPelaajanVuoroPaattymassa(pelaajanimi));
+
+    }
+    
+     /**
+     * .
+     */
+    @Test
+    public void loppuukoKierros() {
+
+        pelihall.lopetaKierros(pelaajanimi);
+        assertEquals(false, pelihall.tarkistaAlkaakoUusiKierros());
+
+    }
+    
+     /**
+     * .
+     */
+    @Test
+    public void annaPelattavaYhd() {
+
+        assertEquals(true,!pelihall.annaPelattavaYhdistelma().equals("ei_tiedossa"));
+
+    }
+    
+      /**
+     * .
+     */
+    @Test
+    public void annaPelattavaKierronro() {
+
+        assertEquals(true,pelihall.annaKierroslkm()>0 && pelihall.annaKierroslkm()<16);
+
+    }
+    
+      /**
+     * .
+     */
+    @Test
+    public void loppuukoPeli() {
+
+        assertEquals(false,pelihall.loppuukoPeli());
+
+    }
+
+
+   
+
 }

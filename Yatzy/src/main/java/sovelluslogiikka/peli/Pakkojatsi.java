@@ -5,9 +5,9 @@ import java.util.ArrayList;
 /**
  * Pakkojatsi luokka tarjoaa pakkojatsi pelimuunnelman logiikan. Tietää noppien
  * lukumäärän, pelattavat yhdistelmat ja oaaa laskea pisteet yhdistelmalle sekä
- * kokonaispisteet pakkojatsin säännöin Jos osa säännöistä sopii melkein
+ * kokonaispisteet pakkojatsin säännöin. Jos osa säännöistä sopii melkein
  * kaikille jatsin muunnelmille, niin voimme viedä sen default metodiksi
- * rajapintaan
+ * rajapintaan.
  */
 public class Pakkojatsi implements PeliMuunnelma {
 
@@ -23,15 +23,16 @@ public class Pakkojatsi implements PeliMuunnelma {
 
         int summa = 0;
 
-        if (kierroslkm >= 1 || kierroslkm <= 6) { //MITEN SAISI IF HIRVIÖT KORVATTUA...
+        if (kierroslkm >= 1 || kierroslkm <= 6) { //miten saisi if-hirviön korvattua...
             summa = summaaEsiintymat(lukemat, kierroslkm);
         }
-
         if (kierroslkm == 7) {
-            summa = summaaParinLukemat(lukemat); //voisiko samalla metodilla hoitaa monta tutkintaa?
+            //yksi pari
+            summa = summaaParinLukemat(lukemat, 1); //pitää ottaa paras pari
         }
         if (kierroslkm == 8) {
             //kaksi paria
+            summa = summaaParinLukemat(lukemat, 2); //pitää ottaa paras pari
         }
         if (kierroslkm == 9) {
             summa = summaaKolmosienLukemat(lukemat); //voisiko samalla metodilla hoitaa monta tutkintaa?
@@ -40,13 +41,14 @@ public class Pakkojatsi implements PeliMuunnelma {
             summa = summaaNelosienLukemat(lukemat); //voisiko samalla metodilla hoitaa monta tutkintaa?
         }
         if (kierroslkm == 11) {
-            summa = tarkistaPienisuora(lukemat);
+            summa = tarkistaSuora(lukemat, 1);
         }
         if (kierroslkm == 12) {
-            summa = tarkistaSuurisuora(lukemat);
+            summa = tarkistaSuora(lukemat, 2);
         }
         if (kierroslkm == 13) {
             //täyskäsi=yksi pari ja yksi kolmoisluku
+            summa = tarkistaTayskasi(lukemat);
         }
         if (kierroslkm == 14) {
             summa = lukemat.get(0) + lukemat.get(1) + lukemat.get(2) + lukemat.get(3) + lukemat.get(4);
@@ -59,6 +61,46 @@ public class Pakkojatsi implements PeliMuunnelma {
 
     }
 
+    /**
+     * Apumetodi tayskäden löytämiseen ja pisteiden laskentaan
+     *
+     * @param lukemat
+     * @return pisteet
+     */
+    private int tarkistaTayskasi(ArrayList<Integer> lukemat) {
+
+        int summa = 0, summa1 = 0, summa2 = 0;
+
+        summa1 = summaaKolmosienLukemat(lukemat);
+
+        for (int i = 0; i < lukemat.size(); i++) {
+
+            for (int j = 1; j < lukemat.size(); j++) {
+
+                if (lukemat.get(i) == lukemat.get(j) && i == j - 1 && lukemat.get(i) != summa1 / 3) {
+
+                    summa2 = lukemat.get(i) + lukemat.get(j);
+
+                }
+
+            }
+
+        }
+        if (summa1 != 0 && summa2 != 0) {
+            summa = summa1 + summa2;
+        }
+
+        return summa;
+    }
+
+    /**
+     * Apumetodi 1-6 lukemien laskemiseen
+     *
+     * @param lukemat
+     * @param kierroslkm
+     *
+     * @return pisteet
+     */
     private int summaaEsiintymat(ArrayList<Integer> lukemat, int kierroslkm) {
         int summa = 0;
         for (Integer luku : lukemat) {
@@ -71,31 +113,73 @@ public class Pakkojatsi implements PeliMuunnelma {
         return summa;
     }
 
-   
-    private int summaaParinLukemat(ArrayList<Integer> lukemat) {
+    /**
+     * Apumetodi yhden tai kahden parin löytämiseen ja pisteiden laskentaan
+     *
+     * @param lukemat
+     * @param parilkm
+     *
+     * @return pisteet
+     */
+    private int summaaParinLukemat(ArrayList<Integer> lukemat, int parilkm) {
 
-        int paluu = 0;
+        int summa = 0, summa1 = 0, summa2 = 0;
+        boolean loppu = false;
 
         for (int i = 0; i < lukemat.size(); i++) {
 
             for (int j = 1; j < lukemat.size(); j++) {
 
-                if (lukemat.get(i) == lukemat.get(j) && i == j - 1) { //bug, pitää ottaa parhaimman parin pisteet jos esim. 46611
+                if (lukemat.get(i) == lukemat.get(j) && i == j - 1) {
 
-                    paluu = lukemat.get(i) + lukemat.get(j);
+                    summa1 = lukemat.get(i) + lukemat.get(j);
+                    loppu = true;
 
+                }
+                if (loppu) {
+                    break;
+                }
+            }
+
+        }
+
+        for (int k = 0; k < lukemat.size(); k++) {
+
+            for (int l = 1; l < lukemat.size(); l++) {
+
+                if (lukemat.get(k) == lukemat.get(l) && k == l - 1) { //pitää ottaa parhaimman parin pisteet jos esim. 46611
+
+                    if (lukemat.get(k) + lukemat.get(l) != summa1) {
+                        summa2 = lukemat.get(k) + lukemat.get(l);
+                    }
                 }
 
             }
 
         }
 
-        return paluu;
+        if (parilkm == 1 && summa1 >= summa2) {
+            summa = summa + summa1;
+        }
+        if (parilkm == 1 && summa1 < summa2) {
+            summa = summa + summa2;
+        }
+        if (parilkm == 2 && summa1 != summa2 && summa1 != 0 && summa2 != 0) {
+            summa = summa1 + summa2;
+        }
+
+        return summa;
     }
 
+    /**
+     * Apumetodi kolmen saman lukeman löytämiseen ja pisteiden laskentaan
+     *
+     * @param lukemat
+     * @return pisteet
+     */
     private int summaaKolmosienLukemat(ArrayList<Integer> lukemat) {
 
-        int paluu = 0;
+        int summa = 0;
 
         for (int i = 0; i < lukemat.size(); i++) {
 
@@ -104,7 +188,7 @@ public class Pakkojatsi implements PeliMuunnelma {
 
                     if (lukemat.get(i) == lukemat.get(j) && i == j - 1 && lukemat.get(j) == lukemat.get(k) && j == k - 1) {
 
-                        paluu = lukemat.get(i) + lukemat.get(j) + lukemat.get(k);
+                        summa = lukemat.get(i) + lukemat.get(j) + lukemat.get(k);
 
                     }
 
@@ -113,12 +197,19 @@ public class Pakkojatsi implements PeliMuunnelma {
 
         }
 
-        return paluu;
+        return summa;
     }
 
+    /**
+     * Apumetodi neljän saman lukeman löytämiseen ja pisteiden laskentaan
+     *
+     * @param lukemat
+     *
+     * @return pisteet
+     */
     private int summaaNelosienLukemat(ArrayList<Integer> lukemat) {
 
-        int paluu = 0;
+        int summa = 0;
 
         for (int i = 0; i < lukemat.size(); i++) {
 
@@ -129,7 +220,7 @@ public class Pakkojatsi implements PeliMuunnelma {
 
                         if (lukemat.get(i) == lukemat.get(j) && i == j - 1 && lukemat.get(j) == lukemat.get(k) && j == k - 1 && lukemat.get(k) == lukemat.get(l) && k == l - 1) {
 
-                            paluu = lukemat.get(i) + lukemat.get(j) + lukemat.get(k) + lukemat.get(l);
+                            summa = lukemat.get(i) + lukemat.get(j) + lukemat.get(k) + lukemat.get(l);
 
                         }
 
@@ -139,47 +230,46 @@ public class Pakkojatsi implements PeliMuunnelma {
 
         }
 
-        return paluu;
+        return summa;
     }
 
-    private int tarkistaPienisuora(ArrayList<Integer> lukemat) {
-        int paluu = 0;
+    /**
+     * Apumetodi pienen ja suuren suoran löytämiseen ja pisteiden laskentaan
+     *
+     * @param lukemat
+     * @param aloitusluku
+     * @return pisteet
+     */
+    private int tarkistaSuora(ArrayList<Integer> lukemat, int aloitusluku) {
+        int summa = 0;
         int lkm = 0;
 
         for (int i = 0; i < lukemat.size(); i++) {
 
-            if (lukemat.get(i) == i + 1) {
+            if (lukemat.get(i) == i + aloitusluku) {
                 lkm++;
             }
 
         }
 
-        if (lkm == 5) {
-            paluu = 15;
+        if (aloitusluku == 1 && lkm == 5) {
+            summa = 15;
         }
-        return paluu;
+        if (aloitusluku == 2 && lkm == 5) {
+            summa = 20;
+        }
+        return summa;
     }
 
-    private int tarkistaSuurisuora(ArrayList<Integer> lukemat) {
-        int paluu = 0;
-        int lkm = 0;
-
-        for (int i = 0; i < lukemat.size(); i++) {
-
-            if (lukemat.get(i) == i + 2) {
-                lkm++;
-            }
-
-        }
-
-        if (lkm == 5) {
-            paluu = 20;
-        }
-        return paluu;
-    }
-
+    /**
+     * Apumetodi jatsin löytämiseen ja pisteiden laskentaan
+     *
+     * @param lukemat
+     *
+     * @return pisteet
+     */
     private int tarkistaJatsi(ArrayList<Integer> lukemat) {
-        int paluu = 0;
+        int summa = 0;
         int lkm = 0;
 
         int verrattava = lukemat.get(0);
@@ -192,9 +282,9 @@ public class Pakkojatsi implements PeliMuunnelma {
         }
 
         if (lkm == 4) {
-            paluu = 50;
+            summa = 50;
         }
-        return paluu;
+        return summa;
     }
 
     /**
@@ -223,10 +313,10 @@ public class Pakkojatsi implements PeliMuunnelma {
         int summa1 = 0;
         int summa2 = 0;
 
-        for (int i = 1; i < 7; i++) {
+        for (int i = 0; i < 6; i++) {
             summa1 = summa1 + yhdistelmat.get(i).annaPisteet();
         }
-        for (int i = 7; i < 15; i++) { //final luokkamuuttujaksi
+        for (int i = 6; i < 15; i++) { //final luokkamuuttujaksi
             summa2 = summa2 + yhdistelmat.get(i).annaPisteet();
         }
         if (summa1 >= 63) {
@@ -238,6 +328,7 @@ public class Pakkojatsi implements PeliMuunnelma {
 
     /**
      * Metodi joka osaa luoda tarvittavan määrän sopia noppia pakkojatsia varten
+     * Voisi luoda myös tarvittaessa muitakin kuin 6 kulmaisia noppia
      *
      * @return nopat
      */
@@ -270,6 +361,11 @@ public class Pakkojatsi implements PeliMuunnelma {
         return yhdistelmat;
     }
 
+    /**
+     * Metodi joka kertoo meneillään olevan kierroksen
+     *
+     * @return 
+     */
     @Override
     public int annaKierroksienMaara() {
         return 15; //final luokkamuuttujaksi
