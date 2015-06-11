@@ -6,7 +6,7 @@ Yksi tai useampi pelaaja
 
 **Toiminnot:**
 * Sovellus lukee pelaajien tiedot tiedostosta pelin käynnistyessä.
-* Sovellus avaa ensin pelaajien hallinnan näytön, jolla voidaan lisätä uusia pelaajia ja valita listalta (kaikki sen hetkiset pelaajat) seuraavan pelin pelaajat.
+* Sovellus avaa ensin pelaajien hallinnan näytön, jolla voidaan lisätä uusia pelaajia ja valita listalta seuraavan pelin pelaajat. 
 * Seuraavana sovellus avaa pelin hallinnan näytön, johon jokaiselle pelaajalla on lisätty oma nopparivi.
 * Pelaajat voivat itse päättää missä järjestyksessä heittävät noppiansa.
 * Pelaaja voi vuorollaan heittää noppia maksimissaan kolme kertaa. Pelaajan ei tarvitse käyttää kolmea heittokertaa. Ensimmäisellä heittokerralla pelaajan on heitettävä kaikki nopat. Seuraavalla kahdella heittokerralla pelaaja päättää itse mitä pelaajan noppaa tai noppia heitetään. Kun pelaaja päättää heittovuoronsa, yhdistelmän tulos näytetään nopparivin lopussa.
