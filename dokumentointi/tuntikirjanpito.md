@@ -12,8 +12,8 @@
 * **26.5.2015** 4 h Korjaukset ja lisätoiminnallisuuksia
 * **27.5.2015** 3 h Lisätoiminnallisuuksia ja testin korjauksia
 * **28.5.2015** 2 h Testien korjauksia ja palautus
-* **29.5.2015** 1 h Katselmointi
-* **30.5.2015** 7 h Katselmointi, käyttäliittymän suunnittelu ja ensimmäinen versio
+* **29.5.2015** 1 h Katselmoinnin aloittaminen
+* **30.5.2015** 7 h Katselmointi ja kommenttien lisääminen, käyttöliittymän suunnittelu ja ensimmäinen versio
 * **31.5.2015** 7 h Käyttöliittymän testaus ja uusi versio (ei ole riippuvainen pelaajien määrästä)
 * **1.6.2015** 5 h Käyttöliittymän testaus, virheiden metsästys ja korjaus, sekvensikaavioiden aloitus
 * **2.6.2015** 5 h Käyttöliittymän testaus, virheiden metsästys ja korjaus, sekvensikaavioiden jatkaminen
