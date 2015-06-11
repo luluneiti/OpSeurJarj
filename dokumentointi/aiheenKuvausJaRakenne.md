@@ -6,10 +6,11 @@ Yksi tai useampi pelaaja
 
 **Toiminnot:**
 * Sovellus lukee pelaajien tiedot tiedostosta pelin käynnistyessä.
-* Sovellus pyytää alussa pelaajien lukumäärän ja nimet.
-* Pelaaja heittää noppia. Pelaaja voi vuorollaan heittää noppia kolme kertaa. Ensimmäisellä kerralla pelaajan on heitettävä kaikki nopat. Seuraavalla kahdella heittokerralla pelaaja päättää mitä pelaajan noppaa tai noppia heitetään. Kun pelaaja päättää heittovuoronsa, tulos kirjataan pöytäkirjaan, ja vuoro siirtyy seuraavalle pelaajalle.
-* Sovellus näyttää pelattavan yhdistelmän ja pelaajien pisteet yhdistelmässä
-* Kun pöytäkirjan kaikki yhdistelmät on käyty läpi, sovellus laskee pelaajan/pelaajien yhteispisteet.
-* Sovellus ilmoittaa kuka pelaajista voitti ja jos jokun pelaajista rikkoi entisen henkilökohtaisen ennätyksensä.
+* Sovellus avaa ensin pelaajien hallinnan näytön, jolla voidaan lisätä uusia pelaajia ja valita listalta (kaikki sen hetkiset pelaajat) seuraavan pelin pelaajat.
+* Seuraavana sovellus avaa pelin hallinnan näytön, johon jokaiselle pelaajalla on lisätty oma nopparivi.
+* Pelaajat voivat itse päättää missä järjestyksessä heittävät noppiansa.
+* Pelaaja voi vuorollaan heittää noppia maksimissaan kolme kertaa. Pelaajan ei tarvitse käyttää kolmea heittokertaa. Ensimmäisellä heittokerralla pelaajan on heitettävä kaikki nopat. Seuraavalla kahdella heittokerralla pelaaja päättää itse mitä pelaajan noppaa tai noppia heitetään. Kun pelaaja päättää heittovuoronsa, yhdistelmän tulos näytetään nopparivin lopussa.
+* Sovellus näyttää pelattavan kierroksen ja yhdistelmän sekä antaa pelaajille tietoa siitä, mitä seuraavaksi tulee tehdä.
+* Kun kaikki yhdistelmät on käyty läpi, sovellus laskee pelaajan/pelaajien kokonaispisteet ja ilmoittaa kuka pelaajista voitti ja jos jokun pelaajista rikkoi entisen henkilökohtaisen ennätyksensä. 
 * Sovellus tallettaa pelaajien ennätyspisteet ja kirjoittaa pelaajien tiedot tiedostoon.
 
