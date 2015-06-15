@@ -1,4 +1,4 @@
-**Aihe:**
+***Aihe***
 Toteutetaan Yatzy/jatsi peli, jota voi pelata yksi tai useampi henkilö. Yatzy on viidellä nopalla pelattava peli. Pelin tarkoituksena on saavuttaa noppia heittämällä mahdollisimman monta erilaista lukujen yhdistelmää. Yhdistelmien tulos merkitään pöytäkirjaan. Pöytäkirjan täytyttyä voittaja on se pelaaja, jolla on korkeimmat pisteet. Pelatessaan yksin pelaaja voi yrittää rikkoa entisen henkilökohtaisen ennätyksensä. Pelistä toteutetaan ensin ns. pakkoyatzy versio, jossa pöytäkirjaa täytetään järjestyksessä ylhäältä alas, eli pelaaja ei voi valita pelattavaa yhdistelmää.
 
 **Käyttäjät:**
@@ -14,3 +14,9 @@ Yksi tai useampi pelaaja
 * Kun kaikki yhdistelmät on käyty läpi, sovellus laskee pelaajan/pelaajien kokonaispisteet ja ilmoittaa kuka pelaajista voitti ja jos jokun pelaajista rikkoi entisen henkilökohtaisen ennätyksensä. 
 * Sovellus tallettaa pelaajien ennätyspisteet ja kirjoittaa pelaajien tiedot tiedostoon.
 
+***Rakenne***
+Ohjausluokka (JatsiOhjain) tuntee sekä käyttölittymän (GraafinenJatsi) että pelaajia hallinnoivan luokan (PelaajienHallinta) ja peliä hallinnoivan luokan (PelinHallinta). Ohjausluokka luo edellä mainituista ilmentymän ja pyytää käyttöliittymää rekisteröimään ohjausluokan. Kun käyttäjä esim. klikkaa painiketta käyttöliittymässä, pyyntö ohjautuu käyttöliittymästä ohjausluokalle, joka taas kutsuu PelaajienHallinta ja PelinHallinta luokkien palveluita. 
+
+PelaajienHallinta luokka lukee pelaajien tiedot (kaikki pelaajat) tiedostosta ja kirjoittaa lopussa pelaajen tiedot tiedostoon. Se käyttää tiedoston käsitelyssä TiedostonHallinta luokan palveluita. Pelin alussa voidan luoda myös uusi pelaajia.
+
+PelinHallinta on riippuvainen PelaajienHallinnasta, koska ennen pelin käynnistystä tulee valita pelaajat aloitettavaa peliä varten. PelinHallinta huolehtii, että valituille pelaajille luodaan nopat ja yhdistelmät. Noppienja yhdistelmien luonnissa se käyttää PeliMuunnelma luokan toteuttavan luokan, tässä tapauksessa Pakkojatsin, palveluita. Pakkojatsi tuntee pakkojatsi-pelimuunnelman pelattavat yhdistelmat, noppien määrät ja pisteiden laskusäännöt. PelinHallinta käyttää myös Noppa luokan palveluita, kun pelaajan noppia heitetään. Noppa olio pitää myös kirjaa siitä, että kuinka monta kertaa sitä on heitetty ja PelinHallinta hyödyntää tätä kun tutkitaan, onko pelaaja heittänyt jos vuoronsa kaikki 3 heittoa.
