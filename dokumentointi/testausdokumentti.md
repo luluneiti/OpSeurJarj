@@ -9,5 +9,5 @@
   * pisteiden laskun oikeellisuuden varmistaminen
   * nopan lukemien vaihtuminen eri heittokerroilla
 
-**Virheet /ominaisuudet**
+**Virheet /ominaisuudet:**
 * Jos peli ei pääty normaalisti, niin uusia pelaajia ei talleteta tiedostoon.
