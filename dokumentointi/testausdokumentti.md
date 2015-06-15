@@ -8,4 +8,4 @@
 6. pisteiden laskun oikeellisuutta varmistettu
 
 # Virheet /ominaisuudet
-* Jos peli ei pääty normaalisti, niin uusi pelaajia ei talleta tiedostoon.
+* Jos peli ei pääty normaalisti, niin uusia pelaajia ei talleteta tiedostoon.
