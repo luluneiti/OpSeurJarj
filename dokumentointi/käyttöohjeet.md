@@ -5,6 +5,6 @@
 * Valitse haluamasi pelaajat "Pelaajat" listalta mukaan seuraavaksi käynnistyvään peliin valitsemalla pelaajat listalta ja klikkaamalla "Valitse pelaajat" painiketta.
 * Kun pelaajat on valittu, "Aloita peli" painike aktivoituu ja voit aloita pelin sitä klikkaamalla.
 * "Yatzy" ikkuna aukea ja kaikille valituille pelaajile on luotu oma nopparivi.
-* Peli aloitetaan heittämällä noppaa ja kun kaikki ovat heittäneet vuoronsa, "Uusi kierros" painike aktivoituu. Pelaajan ei tarvitse heittää kaikkia 3 kierrosta vaan hän voi päättää vuoronsa klikkaamalla "Lopeta vuoro" painiketta. Pelin inforivillä kerrotaan mitä pelaajien tulisi tehdän. 
+* Peli aloitetaan heittämällä noppaa ja kun kaikki ovat heittäneet vuoronsa, "Uusi kierros" painike aktivoituu ja sitä klikkaamalla siirrytään seuraavalla kierrokselle. Pelaajan ei tarvitse heittää kaikkia 3 kierrosta vaan hän voi päättää vuoronsa klikkaamalla "Lopeta vuoro" painiketta. Pelin inforivillä kerrotaan mitä pelaajien tulisi tehdän. 
 * Pelaajat voivat heittää noppiansa haluamassaan järjestyksessä. Ensimäisellä heittokerralla on pakko heittää kaikkia noppia ja kahdella seuraavalla kerralla pelaaja valitsee heitettävät nopat. Noppaa ei heitetä, jos pelaaja poistaa ruksin nopan "heitto?" valintaruudusta.
 * Kun pelin on loppu eli kaikki yhdistelmät on käyty läpi, peli ilmoittaa voittajan/voittajie nimet sekä enätyksen tehneiden nimet. Koska kyseessä on pakkojatsi, pelajat eivät voi valita pelattavaa yhdistelmää.
