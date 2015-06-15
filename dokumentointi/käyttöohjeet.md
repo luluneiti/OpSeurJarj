@@ -1,4 +1,4 @@
-**Käyttöohjeet**
+**Käyttöohjeet:**
 * Käynnistä peli ajamalla JatsiOhjain-ohjausluokka (sisältää main-metodin)
 * Pelaajien hallinta ikkuna aukeaa ja "Pelaajat" listalle on haettu kaikki aiemmin luodut pelaajat.
 * Lisää uusi pelaajia syöttämällä nimi "Pelaajan nimi" kenttään ja klikkaamalla "Luo uusi pelaaja" painiketta. Uusi pelaaja listään "Pelaajat" listalle.
