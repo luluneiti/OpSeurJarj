@@ -8,6 +8,7 @@
   * pelaajan lisääminen, kun peliä ei pelata loppuun
   * pisteiden laskun oikeellisuuden varmistaminen
   * nopan lukemien vaihtuminen eri heittokerroilla
+  * jne.
 
 **Virheet /ominaisuudet:**
 * Jos peli ei pääty normaalisti, niin uusia pelaajia ei talleteta tiedostoon.
