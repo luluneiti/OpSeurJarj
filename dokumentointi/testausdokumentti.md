@@ -1,5 +1,5 @@
 **Testatut luokat**
-GraafinenJatsi ja JatsiOhjain luokila ei ole automaattisia testejä. Ne on testattu käsin paperille tehtyjen testitapauksien avula. 
+* GraafinenJatsi ja JatsiOhjain luokila ei ole automaattisia testejä. Ne on testattu käsin paperille tehtyjen testitapauksien avula. 
 * painikeiden aktivoitumista ja passivoitumista tietyisä tapauksissa
 * virhetilanteita kun esim. pelaajia ei ole valittu
 * voittajan/voittajien tietojen näyttämistä
