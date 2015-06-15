@@ -2,7 +2,7 @@
 * Käynnistä peli ajamalla ohjausluokka (sisältää main-metodin)
 * Pelaajien hallinta ikkuna aukeaa ja "Pelaajat" listalle on haettu kaikki aiemmin luodut pelaajat.
 * Lisää uusi pelaajia syöttämällä nimi "Pelaajan nimi" kenttään ja klikkaamalla "Luo uusi pelaaja" painiketta. Uusi pelaaja listään "Pelaajat" listalle.
-* Valitse haluamasi pelaajat "Pelaajat" listasta mukaan seuraavaksi käynnistyvään peliin valitsemalla pelaajat listalta ja klikkaamalla "Valitse pelaajat" painiketta.
+* Valitse haluamasi pelaajat "Pelaajat" listalta mukaan seuraavaksi käynnistyvään peliin valitsemalla pelaajat listalta ja klikkaamalla "Valitse pelaajat" painiketta.
 * Kun pelin on valittu pelaajat, "Aloita peli" painike aktivoituu ja voit aloita pelin sitä klikkaamalla.
 * "Yatzy" ikkuna aukea ja kaikille valituille pelaajile on luotu oma nopparivi.
 * Peli aloitetaan heittämällä noppaa ja kun kaikki ovat heittäneet vuoronsa, "Uusi kierros" painike aktivoituu. Pelin inforivillä kerrotaan mitä pelaajien tulisi tehdän.
