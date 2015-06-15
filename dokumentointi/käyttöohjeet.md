@@ -7,6 +7,6 @@
 * "Yatzy" ikkuna aukeaa ja kaikille valituille pelaajile on luotu oma nopparivi.
 * Peli aloitetaan siten, että kukin pelaaja heittää noppiaan. Pelaajat voivat heittää haluamassaan järjestyksessä. Ensimäisellä heittokerralla on pakko heittää kaikkia noppia ja kahdella seuraavalla kerralla pelaaja valitsee heitettävät nopat. Noppaa ei heitetä, jos pelaaja poistaa ruksin nopan "Heitto?" valintaruudusta.
 * Pelaajan ei tarvitse heittää kaikkia 3 kierrosta vaan hän voi päättää vuoronsa klikkaamalla "Lopeta vuoro" painiketta. 
-* Pelin inforivillä kerrotaan mitä pelaajien tulisi tehdän. 
+* Pelin inforivillä (nopparivien alla) kerrotaan mitä pelaajien tulisi tehdän. 
 * Kun kaikki ovat heittäneet vuoronsa, "Uusi kierros" painike aktivoituu ja sitä klikkaamalla siirrytään seuraavalla kierrokselle. 
 * Kun pelin on loppu eli kaikki yhdistelmät on käyty läpi, peli ilmoittaa voittajan/voittajie nimet sekä enätyksen tehneiden nimet. Koska kyseessä on pakkojatsi, pelajat eivät voi valita pelattavaa yhdistelmää.
