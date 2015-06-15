@@ -9,4 +9,5 @@
 * Pelaajan ei tarvitse heittää kaikkia 3 kierrosta vaan hän voi päättää vuoronsa klikkaamalla "Lopeta vuoro" painiketta. 
 * Pelin inforivillä (nopparivien alla) kerrotaan mitä pelaajien tulisi tehdän. 
 * Kun kaikki ovat heittäneet vuoronsa, "Uusi kierros" painike aktivoituu ja sitä klikkaamalla siirrytään seuraavalla kierrokselle. 
-* Kun pelin on loppu eli kaikki yhdistelmät on käyty läpi, peli ilmoittaa voittajan/voittajie nimet sekä enätyksen tehneiden nimet. Koska kyseessä on pakkojatsi, pelajat eivät voi valita pelattavaa yhdistelmää.
+* Kun pelin on loppu eli kaikki yhdistelmät on käyty läpi, peli ilmoittaa voittajan nimen/voittajien nimet sekä ennätyksen tehneen nimen/ tehneiden nimet. Jos kukaan pelaajista ei tehnyt ennätystä, näytetään sitä ilmoitus. 
+* Koska kyseessä on pakkojatsi, pelajat eivät voi valita pelattavaa yhdistelmää. Pelattavat yhdistelmät pelataan aina samassa järjestyksessä.
