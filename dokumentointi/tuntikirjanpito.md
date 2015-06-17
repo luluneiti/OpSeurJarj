@@ -24,5 +24,5 @@
 * **12.6.2015** 6 h Ohjausluokan teko ja testaus
 * **13.6.2015** 4 h Katselmointi
 * **15.6.2015** 7 h Javadoc kommenttien täydennys, ohjelman siistiminen, dokumentien läpikäyntiä ja päivitystä
-* **17.6.2015** 7 h Koodin siistiminen ja pelin sujuvuuden parantaminen (automaattinen kierroksen vaihto)
+* **17.6.2015** 7 h Koodin siistiminen ja pelin sujuvuuden parantaminen (automaattinen kierroksen vaihto), dokujen siistiminen
 * **18.6.2015** x h Jar, javadoc, tarkista: luokka- ja sekvenssikaaviot (uusin versio!), pit
