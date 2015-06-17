@@ -10,7 +10,7 @@
   * pisteiden laskun oikeellisuuden varmistaminen
   * nopan lukemien vaihtuminen eri heittokerroilla
   * jne.
-* Muilla luokilla on automaattiset testit ja osalla luokista monta testiluokkaa. Ohjausluokan testit ovat suppeammat, koska ohjausluokan käyttämien luokkien toiminnallisuus on testattu ko. luokkien testeissä. 
+* Muilla luokilla on automaattiset testit ja osalla luokista monta testiluokkaa. Ohjausluokan testit ovat suppeammat, koska toiminnallisuutta on testattu niiden luokkien testeissä, jotka tarjoavat palveluja ohjausluokalla. 
   
 **Virheet /ominaisuudet:**
 * Jos peli ei pääty normaalisti, niin uusia pelaajia ei talleteta tiedostoon.
