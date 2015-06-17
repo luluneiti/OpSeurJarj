@@ -1,14 +1,17 @@
 
 **Luokkien testaus:**
-* GraafinenJatsi ja JatsiOhjain luokila ei ole automaattisia testejä. Ne on testattu käsin erilaisten testitapauksien avulla. 
+* GraafinenJatsi luokalla ei ole automaattisia testejä. Se on testattu käsin erilaisten testitapausten avulla. 
   * painikeiden aktivoituminen ja passivoituminen tietyissä tilanteissa
-  * erilaiset virhetilanteet ja siitä aiheutuvat ilmoitukset
-  * voittajan/voittajien tietojen näyttäminen ja erikoistilanteet kuten tasapeli
-  * ennätyksen tekijöiden tietojen näyttäminen
-  * pelaajan lisääminen, kun peliä ei pelata loppuun
+  * erilaiset virhetilanteet, niistä toipuminen  ja niistä aiheutuvat ilmoitukset
+  * voittajan/voittajien tietojen näyttäminen ja erikoistilanteet kuten tasapeli tai yksinpeli
+  * ennätyksen tekijöiden tietojen näyttäminen (yksi, useampi, ei kukaan)
+  * poistuminen pelaajan hallinta näytöltä ilman pelaamista
+  * poistuminen peli näytöltä kesken pelin
   * pisteiden laskun oikeellisuuden varmistaminen
   * nopan lukemien vaihtuminen eri heittokerroilla
   * jne.
-
+* Muilla luokilla on automaattiset testit ja osalla luokista monta testiluokkaa.
+  
 **Virheet /ominaisuudet:**
 * Jos peli ei pääty normaalisti, niin uusia pelaajia ei talleteta tiedostoon.
+* 
