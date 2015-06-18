@@ -12,3 +12,17 @@
 * **26.5.2015** 4 h Korjaukset ja lisätoiminnallisuuksia
 * **27.5.2015** 3 h Lisätoiminnallisuuksia ja testin korjauksia
 * **28.5.2015** 2 h Testien korjauksia ja palautus
+* **29.5.2015** 1 h Katselmoinnin aloittaminen
+* **30.5.2015** 7 h Katselmointi ja kommenttien lisääminen, käyttöliittymän suunnittelu ja ensimmäinen versio
+* **31.5.2015** 7 h Käyttöliittymän testaus ja uusi versio (ei ole riippuvainen pelaajien määrästä)
+* **1.6.2015** 5 h Käyttöliittymän testaus, virheiden metsästys ja korjaus, sekvensikaavioiden aloitus
+* **2.6.2015** 5 h Käyttöliittymän testaus, virheiden metsästys ja korjaus, sekvensikaavioiden jatkaminen
+* **8.6.2015** 6 h Pelaajien hallinta ikkunan lisääminen ja testaus
+* **9.6.2015** 6 h Pelaajien hallinta ikkunan jatkaminen, virheiden metsästys ja testaus
+* **10.6.2015** 3 h Sekvensiokaavioiden päivitys ja uuden luonti, katselmoitavaan projektiin tutustuminen
+* **11.6.2015** 7 h Käyttöliittymän siistiminen, dokujen päivitys ja palautus
+* **12.6.2015** 6 h Ohjausluokan teko ja testaus
+* **13.6.2015** 4 h Katselmointi
+* **15.6.2015** 7 h Javadoc kommenttien täydennys, ohjelman siistiminen, dokumentien läpikäyntiä ja päivitystä
+* **17.6.2015** 7 h Koodin siistiminen ja pelin sujuvuuden parantaminen (automaattinen kierroksen vaihto), dokujen siistiminen
+* **18.6.2015** x h Jar, javadoc, tarkista: luokka- ja sekvenssikaaviot (uusin versio!), pit
