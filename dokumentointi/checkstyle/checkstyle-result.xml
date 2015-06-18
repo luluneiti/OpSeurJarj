@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.7">
+<file name="C:\Users\Ulla\Documents\GitHub\OpSeurJarj\OpSeurJarj\Yatzy\src\main\java\kayttoliittyma\GraafinenJatsi.java">
+<error line="1" severity="error" message="Tiedoston pituus on 535 riviÃ¤ (suurin sallittu on 200)." source="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck"/>
+</file>
+<file name="C:\Users\Ulla\Documents\GitHub\OpSeurJarj\OpSeurJarj\Yatzy\src\main\java\sovelluslogiikka\ohjaus\JatsiOhjain.java">
+<error line="1" severity="error" message="Tiedoston pituus on 346 riviÃ¤ (suurin sallittu on 200)." source="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck"/>
+</file>
+<file name="C:\Users\Ulla\Documents\GitHub\OpSeurJarj\OpSeurJarj\Yatzy\src\main\java\sovelluslogiikka\pelaaja\Pelaaja.java">
+</file>
+<file name="C:\Users\Ulla\Documents\GitHub\OpSeurJarj\OpSeurJarj\Yatzy\src\main\java\sovelluslogiikka\pelaaja\PelaajienHallinta.java">
+</file>
+<file name="C:\Users\Ulla\Documents\GitHub\OpSeurJarj\OpSeurJarj\Yatzy\src\main\java\sovelluslogiikka\pelaaja\TiedostonHallinta.java">
+</file>
+<file name="C:\Users\Ulla\Documents\GitHub\OpSeurJarj\OpSeurJarj\Yatzy\src\main\java\sovelluslogiikka\peli\Noppa.java">
+</file>
+<file name="C:\Users\Ulla\Documents\GitHub\OpSeurJarj\OpSeurJarj\Yatzy\src\main\java\sovelluslogiikka\peli\Pakkojatsi.java">
+<error line="1" severity="error" message="Tiedoston pituus on 377 riviÃ¤ (suurin sallittu on 200)." source="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck"/>
+</file>
+<file name="C:\Users\Ulla\Documents\GitHub\OpSeurJarj\OpSeurJarj\Yatzy\src\main\java\sovelluslogiikka\peli\PeliMuunnelma.java">
+</file>
+<file name="C:\Users\Ulla\Documents\GitHub\OpSeurJarj\OpSeurJarj\Yatzy\src\main\java\sovelluslogiikka\peli\PelinHallinta.java">
+<error line="1" severity="error" message="Tiedoston pituus on 417 riviÃ¤ (suurin sallittu on 200)." source="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck"/>
+</file>
+<file name="C:\Users\Ulla\Documents\GitHub\OpSeurJarj\OpSeurJarj\Yatzy\src\main\java\sovelluslogiikka\peli\Yhdistelma.java">
+</file>
+<file name="C:\Users\Ulla\Documents\GitHub\OpSeurJarj\OpSeurJarj\Yatzy\src\main\java\sovelluslogiikka\peli\YhdistelmanNimi.java">
+</file>
+</checkstyle>
