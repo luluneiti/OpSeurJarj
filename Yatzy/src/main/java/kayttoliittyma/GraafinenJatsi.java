@@ -9,8 +9,8 @@ import javafx.scene.layout.Border;
 import sovelluslogiikka.ohjaus.JatsiOhjain;
 
 /**
- * GraafinenJatsi luokka sisältää näytöt jatsi pelaamiseen sekä naytön
- * pelaajien hallintaan.
+ * GraafinenJatsi luokka sisältää näytöt jatsi pelaamiseen sekä naytön pelaajien
+ * hallintaan.
  *
  * @author Ulla
  */
@@ -281,7 +281,7 @@ public class GraafinenJatsi extends JFrame implements ActionListener {
 
         }
 
-        ImageIcon image = new ImageIcon("0.png");
+        ImageIcon image = new ImageIcon(ImageIcon.class.getResource("/" + 0 + ".png"));
         for (int i = 0; i < pelaajalkm * this.ohjain.annaNoppienMaara(); i++) { //tehdään monta per pelaaja
 
             silmalukematKuvana[i] = new JLabel(image, JLabel.CENTER);
@@ -372,7 +372,8 @@ public class GraafinenJatsi extends JFrame implements ActionListener {
     }
 
     /**
-     * Metodi jolla tietty heittaako valintaruutu voidaan valita (=ruksi ruutuun)
+     * Metodi jolla tietty heittaako valintaruutu voidaan valita (=ruksi
+     * ruutuun)
      *
      * @param indeksi kuinka mones heittaako valintaruutu
      */

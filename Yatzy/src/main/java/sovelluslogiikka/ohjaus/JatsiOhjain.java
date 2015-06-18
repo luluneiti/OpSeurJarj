@@ -333,14 +333,14 @@ public class JatsiOhjain {
         return 5;
     }
 
-     /**
+    /**
      * Metodi palauttaa nopan silmälukua vastaavan kuvan
      *
      * @param lukema nopan lukema
      * @return nopan silmälukua vastaava kuva
      */
     public ImageIcon naytaLukemaKuvana(int lukema) {
-        return new ImageIcon(lukema + ".png");
+        return new ImageIcon(ImageIcon.class.getResource("/" + lukema + ".png"));
     }
 
 }
