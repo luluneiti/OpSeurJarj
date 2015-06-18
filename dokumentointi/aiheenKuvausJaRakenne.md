@@ -15,7 +15,7 @@ Yksi tai useampi pelaaja
 -Sovellus tallettaa pelaajien ennätyspisteet ja kirjoittaa pelaajien tiedot tiedostoon.
 
 **Rakenne:**
-Ohjausluokka (JatsiOhjain) tuntee sekä käyttölittymän (GraafinenJatsi) että pelaajia hallinnoivan luokan (PelaajienHallinta) ja peliä hallinnoivan luokan (PelinHallinta). Ohjausluokka luo edellä mainituista ilmentymän ja pyytää käyttöliittymää rekisteröimään ohjausluokan. Kun käyttäjä klikkaa painiketta käyttöliittymässä, pyyntö ohjautuu käyttöliittymästä ohjausluokalle, joka taas kutsuu PelaajienHallinta ja PelinHallinta luokkien palveluita. Nopan kuvat (silmäluku variaatiot) sijaitsevat Yatzy -kansion juuressa. 
+Ohjausluokka (JatsiOhjain) tuntee sekä käyttölittymän (GraafinenJatsi) että pelaajia hallinnoivan luokan (PelaajienHallinta) ja peliä hallinnoivan luokan (PelinHallinta). Ohjausluokka luo edellä mainituista ilmentymän ja pyytää käyttöliittymää rekisteröimään ohjausluokan. Kun käyttäjä klikkaa painiketta käyttöliittymässä, pyyntö ohjautuu käyttöliittymästä ohjausluokalle, joka taas kutsuu PelaajienHallinta ja PelinHallinta luokkien palveluita. Nopan kuvat (silmäluku variaatiot) sijaitsevat resources-kansiossa. 
 
 PelaajienHallinta luokka lukee pelaajien tiedot (kaikki pelaajat) tiedostosta ja kirjoittaa lopussa kaikkien pelaajen tiedot tiedostoon. Se käyttää tiedoston käsitelyssä TiedostonHallinta luokan palveluita. Pelaajat -tiedosto sijaitsee Yatzy -kansion juuressa. Pelin alussa voidaan luoda myös uusi pelaajia. 
 
