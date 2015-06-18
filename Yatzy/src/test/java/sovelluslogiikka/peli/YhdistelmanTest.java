@@ -1,7 +1,5 @@
 package sovelluslogiikka.peli;
 
-import sovelluslogiikka.peli.YhdistelmanNimi;
-import sovelluslogiikka.peli.Yhdistelma;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -30,9 +28,6 @@ public class YhdistelmanTest {
     public void tearDown() {
     }
 
-    /**
-     * asetaPisteet metorin tsti.
-     */
     @Test
     public void ssetaPisteet() {
         int pisteet = 1;
@@ -42,9 +37,6 @@ public class YhdistelmanTest {
 
     }
 
-    /**
-     * asetaPisteet metorin tsti.
-     */
     @Test
     public void asetaPisteetNegatiivinen() {
         int pisteet = -1;
@@ -54,9 +46,6 @@ public class YhdistelmanTest {
 
     }
 
-    /**
-     * asetaPisteet metorin tsti.
-     */
     @Test
     public void asetaPisteetNolla() {
         int pisteet = 0;
@@ -66,9 +55,6 @@ public class YhdistelmanTest {
 
     }
 
-    /**
-     * annaPisteet metodi testi
-     */
     @Test
     public void annaPisteet() {
 
@@ -78,12 +64,9 @@ public class YhdistelmanTest {
         assertEquals(yhdistelma.annaPisteet(), 25);
     }
 
-    /**
-     * annaNimi metodin testi.
-     */
     @Test
     public void annaNimi() {
-   
+
         Yhdistelma yhdistelma = new Yhdistelma(YhdistelmanNimi.kakkoset);
         assertEquals(yhdistelma.annaNimi(), YhdistelmanNimi.kakkoset);
     }

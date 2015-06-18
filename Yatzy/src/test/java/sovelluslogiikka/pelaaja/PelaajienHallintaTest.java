@@ -1,6 +1,5 @@
 package sovelluslogiikka.pelaaja;
 
-import sovelluslogiikka.pelaaja.PelaajienHallinta;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -35,9 +34,7 @@ public class PelaajienHallintaTest {
     public void tearDown() {
     }
 
-    /**
-     * annaPelaajat metodin testi
-     */
+  
     @Test
     public void annaPelaajatTyhjaLista() {
 

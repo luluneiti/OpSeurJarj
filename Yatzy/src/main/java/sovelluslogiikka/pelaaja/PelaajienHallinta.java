@@ -3,38 +3,58 @@ package sovelluslogiikka.pelaaja;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import sovelluslogiikka.pelaaja.Pelaaja;
 
 /**
- * Pelaajat luokka pitää tallessa pelaajien tiedot ja tarjoaa tietoja muille
- * luokille
+ * PelaajienHallinta luokka pitää tallessa pelaajien tiedot ja tarjoaa tietoja
+ * muille luokille
  *
+ * @author Ulla
  */
 public class PelaajienHallinta {
 
+    /**
+     * Kaikki pelaajat Listalle luetaan alussa kaikki pelaajat tiedostosta ja
+     * listalta kirjoitetaan kaikki pelaajat lopussa.
+     */
     private static List<Pelaaja> kaikkiPelaajat = new ArrayList<>();
+    /**
+     * Lista pitää sisällään ne pelaajat, jotka on valittu seuraavaan peliin
+     * (ajon aikana)
+     */
     private static List<Pelaaja> valitutPelaajat = new ArrayList<>();
+    /**
+     * Lista pitää sisällään niiden pelaajie nimet, jotka ovat parantaneet
+     * pisteitä juuri lopetetussa pelissä (ajon aikana)
+     */
     private static ArrayList<String> ennatyksenParantajat = new ArrayList<>();
+    /**
+     * Olio tiedoston lukuun ja kirjoitukseen
+     */
     private static TiedostonHallinta tiedostohall = new TiedostonHallinta();
+    /**
+     * Tiedoston, josta luetaan ja jonne kirjoitetaan, nimi
+     */
     private static String tiednimi = "pelaajat";
 
     public PelaajienHallinta() {
 
         kaikkiPelaajat = tiedostohall.lueTiedostosta(tiednimi);
-       /* for (Pelaaja pel : kaikkiPelaajat) {
-            System.out.println("luettu tiedostosta: " + pel.annaNimi() + ", " + pel.annaEnnatysPisteet());
+        /* for (Pelaaja pel : kaikkiPelaajat) {
+         System.out.println("luettu tiedostosta: " + pel.annaNimi() + ", " + pel.annaEnnatysPisteet());
 
-        }*/
+         }*/
 
     }
 
     /**
      * Metodi jolla lisätään pelaaja
      *
-     * @param nimi
-     * @return boolean arvo
+     * @param nimi pelaajan nimi
      */
     public void lisaaPelaaja(String nimi) {
 
+        System.out.println("lisataan: " + nimi);
         for (Pelaaja pelaaja : kaikkiPelaajat) {
             if (pelaaja.annaNimi().equals(nimi)) {
                 throw new IllegalArgumentException("Pelaaja on jo olemassa. Et voi lisatä uudelleen. ");
@@ -47,7 +67,7 @@ public class PelaajienHallinta {
     /**
      * Metodi joka palautta pelin pelaajat
      *
-     * @return kaikki pelaajat
+     * @return valitut pelaajat
      */
     public List<String> annaValitutPelaajat() {
 
@@ -84,7 +104,7 @@ public class PelaajienHallinta {
      * Metodi joka palauttaa niiden pelaajien nimet, jotka ovat rikkoneet oman
      * ennatyksensa
      *
-     * @return nimet
+     * @return ennätyksen tehneiden pelaajien nimet
      */
     public String annaEnnatyksenTehneet() {
 
@@ -102,8 +122,8 @@ public class PelaajienHallinta {
      * ovat korkeammat kuin aiemmat, laittaa pelaajan ennätyksen tehneiden
      * listalle
      *
-     * @param nimi
-     * @param uudetpisteet
+     * @param nimi pelaajan nimi
+     * @param uudetpisteet pelaajan uudet pisteet
      */
     public void tallennaPelaaja(String nimi, int uudetpisteet) {
 
@@ -127,8 +147,8 @@ public class PelaajienHallinta {
     /**
      * Metodi pelaajan ennätyspisteiden hakemiseen
      *
-     * @param nimi
-     * @return
+     * @param nimi pelaajan nimi
+     * @return pelaajan pisteet
      */
     public int annaPelaajanPisteet(String nimi) {
 
@@ -144,7 +164,7 @@ public class PelaajienHallinta {
     /**
      * Metodi pelaajan ottamiseksi mukaan peliin
      *
-     * @param nimi
+     * @param nimi pelaajan nimi
      */
     public void valitsePelaajaksi(String nimi) {
 
@@ -159,10 +179,9 @@ public class PelaajienHallinta {
     public void loppu() {
 
         /*for (Pelaaja pel : kaikkiPelaajat) {
-            System.out.println("kirjoitetaan tiedostoon: " + pel.annaNimi() + ", " + pel.annaEnnatysPisteet());
+         System.out.println("kirjoitetaan tiedostoon: " + pel.annaNimi() + ", " + pel.annaEnnatysPisteet());
 
-        }*/
-
+         }*/
         tiedostohall.kirjoitaTiedostoon(tiednimi, kaikkiPelaajat);
 
     }

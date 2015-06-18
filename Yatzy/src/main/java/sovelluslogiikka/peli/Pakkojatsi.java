@@ -1,6 +1,7 @@
 package sovelluslogiikka.peli;
 
 import java.util.ArrayList;
+import sovelluslogiikka.peli.Noppa;
 
 /**
  * Pakkojatsi luokka tarjoaa pakkojatsi pelimuunnelman logiikan. Tietää noppien
@@ -8,14 +9,16 @@ import java.util.ArrayList;
  * kokonaispisteet pakkojatsin säännöin. Jos osa säännöistä sopii melkein
  * kaikille jatsin muunnelmille, niin voimme viedä sen default metodiksi
  * rajapintaan.
+ *
+ * @author Ulla
  */
 public class Pakkojatsi implements PeliMuunnelma {
 
     /**
      * Metodi yhdistelan pisteiden laskentaan
      *
-     * @param lukemat
-     * @param kierroslkm
+     * @param lukemat nopan lukemat
+     * @param kierroslkm kierrosluku
      * @return pisteet
      */
     @Override
@@ -23,7 +26,7 @@ public class Pakkojatsi implements PeliMuunnelma {
 
         int summa = 0;
 
-        if (kierroslkm >= 1 || kierroslkm <= 6) { //miten saisi if-hirviön korvattua...
+        if (kierroslkm >= 1 || kierroslkm <= 6) {
             summa = summaaEsiintymat(lukemat, kierroslkm);
         }
         if (kierroslkm == 7) {
@@ -35,10 +38,10 @@ public class Pakkojatsi implements PeliMuunnelma {
             summa = summaaParinLukemat(lukemat, 2); //pitää ottaa paras pari
         }
         if (kierroslkm == 9) {
-            summa = summaaKolmosienLukemat(lukemat); //voisiko samalla metodilla hoitaa monta tutkintaa?
+            summa = summaaKolmosienLukemat(lukemat);
         }
         if (kierroslkm == 10) {
-            summa = summaaNelosienLukemat(lukemat); //voisiko samalla metodilla hoitaa monta tutkintaa?
+            summa = summaaNelosienLukemat(lukemat);
         }
         if (kierroslkm == 11) {
             summa = tarkistaSuora(lukemat, 1);
@@ -54,7 +57,7 @@ public class Pakkojatsi implements PeliMuunnelma {
             summa = lukemat.get(0) + lukemat.get(1) + lukemat.get(2) + lukemat.get(3) + lukemat.get(4);
         }
         if (kierroslkm == 15) {
-            summa = tarkistaJatsi(lukemat); //voisiko samalla metodilla hoitaa monta tutkintaa?
+            summa = tarkistaJatsi(lukemat);
         }
 
         return summa;
@@ -64,7 +67,7 @@ public class Pakkojatsi implements PeliMuunnelma {
     /**
      * Apumetodi tayskäden löytämiseen ja pisteiden laskentaan
      *
-     * @param lukemat
+     * @param lukemat nopan lukemat
      * @return pisteet
      */
     private int tarkistaTayskasi(ArrayList<Integer> lukemat) {
@@ -96,8 +99,8 @@ public class Pakkojatsi implements PeliMuunnelma {
     /**
      * Apumetodi 1-6 lukemien laskemiseen
      *
-     * @param lukemat
-     * @param kierroslkm
+     * @param lukemat nopan lukemat
+     * @param pisteet
      *
      * @return pisteet
      */
@@ -116,8 +119,8 @@ public class Pakkojatsi implements PeliMuunnelma {
     /**
      * Apumetodi yhden tai kahden parin löytämiseen ja pisteiden laskentaan
      *
-     * @param lukemat
-     * @param parilkm
+     * @param lukemat nopan lukemat
+     * @param parien lukumäärä
      *
      * @return pisteet
      */
@@ -174,7 +177,7 @@ public class Pakkojatsi implements PeliMuunnelma {
     /**
      * Apumetodi kolmen saman lukeman löytämiseen ja pisteiden laskentaan
      *
-     * @param lukemat
+     * @param lukemat nopan lukemat
      * @return pisteet
      */
     private int summaaKolmosienLukemat(ArrayList<Integer> lukemat) {
@@ -203,8 +206,8 @@ public class Pakkojatsi implements PeliMuunnelma {
     /**
      * Apumetodi neljän saman lukeman löytämiseen ja pisteiden laskentaan
      *
-     * @param lukemat
      *
+     * @param lukemat nopan lukemat
      * @return pisteet
      */
     private int summaaNelosienLukemat(ArrayList<Integer> lukemat) {
@@ -236,8 +239,8 @@ public class Pakkojatsi implements PeliMuunnelma {
     /**
      * Apumetodi pienen ja suuren suoran löytämiseen ja pisteiden laskentaan
      *
-     * @param lukemat
-     * @param aloitusluku
+     * @param nopna lukemat
+     * @param aloitusluku aloituskohta (1 tai 2)
      * @return pisteet
      */
     private int tarkistaSuora(ArrayList<Integer> lukemat, int aloitusluku) {
@@ -264,7 +267,7 @@ public class Pakkojatsi implements PeliMuunnelma {
     /**
      * Apumetodi jatsin löytämiseen ja pisteiden laskentaan
      *
-     * @param lukemat
+     * @param nopan lukemat
      *
      * @return pisteet
      */
@@ -290,7 +293,7 @@ public class Pakkojatsi implements PeliMuunnelma {
     /**
      * Metodi joka tietää yhdistelmien suoritusjärjestyksen
      *
-     * @param kierroslkm
+     * @param kierroslkm kierrosluku
      * @return yhdistelman nimi
      */
     @Override
@@ -304,7 +307,7 @@ public class Pakkojatsi implements PeliMuunnelma {
      * Metodi joka osaa laskea pelaajan kokonaispisteet pelattujen yhdistelmien
      * perusteella
      *
-     * @param yhdistelmat
+     * @param yhdistelmat pelaajan yhdistelmat
      * @return pisteet
      */
     @Override
@@ -352,7 +355,7 @@ public class Pakkojatsi implements PeliMuunnelma {
     @Override
     public ArrayList<Yhdistelma> luoYhdistelmat() {
 
-        ArrayList<Yhdistelma> yhdistelmat = new ArrayList<Yhdistelma>();
+        ArrayList<Yhdistelma> yhdistelmat = new ArrayList<>();
 
         for (int i = 0; i < 15; i++) { //final luokkamuuttujaksi
             yhdistelmat.add(new Yhdistelma(YhdistelmanNimi.values()[i]));
@@ -364,7 +367,7 @@ public class Pakkojatsi implements PeliMuunnelma {
     /**
      * Metodi joka kertoo meneillään olevan kierroksen
      *
-     * @return 
+     * @return kierroksien maksimimäärä
      */
     @Override
     public int annaKierroksienMaara() {

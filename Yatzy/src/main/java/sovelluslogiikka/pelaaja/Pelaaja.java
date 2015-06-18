@@ -4,10 +4,18 @@ import java.io.Serializable;
 
 /**
  * Pelaaja luokka tarjoaa tiedot ja palvelut pelaajan tietojen tallentamiseen
+ *
+ * @author Ulla
  */
 public class Pelaaja implements Serializable {
 
+    /**
+     * Pelaajan nimi
+     */
     private String nimi;
+    /**
+     * Pelaajan ennätyspisteet
+     */
     private int ennatyspisteet;
 
     public Pelaaja(String nimi) {
@@ -21,7 +29,7 @@ public class Pelaaja implements Serializable {
     /**
      * Metodi pelaajan ennätyspisteiden muuttamiseen
      *
-     * @param ennatyspisteet
+     * @param ennatyspisteet pelajan pisteet
      */
     public void asetaEnnatysPisteet(int ennatyspisteet) {
         if (ennatyspisteet >= 0) {
@@ -35,7 +43,7 @@ public class Pelaaja implements Serializable {
     /**
      * Metodi pelaajan ennätyspisteiden muuttamiseen
      *
-     * @return ennätyspisteet
+     * @return pelaajan pisteet
      */
     public int annaEnnatysPisteet() {
         return this.ennatyspisteet;

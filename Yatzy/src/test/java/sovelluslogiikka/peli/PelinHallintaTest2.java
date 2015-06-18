@@ -31,7 +31,8 @@ public class PelinHallintaTest2 {
         pelaajaHallinta.lisaaPelaaja(pelaajanimi2);
         pelaajaHallinta.valitsePelaajaksi(pelaajanimi2);
 
-        pelihall = new PelinHallinta("pakkojatsi", pelaajaHallinta);
+        pelihall = new PelinHallinta();
+        pelihall.alustaPeli("pakkojatsi", pelaajaHallinta);
 
     }
 
@@ -52,9 +53,6 @@ public class PelinHallintaTest2 {
     public void tearDown() {
     }
 
-    /**
-     * .
-     */
     @Test
     public void julistaVoittaja() {
 
@@ -73,13 +71,13 @@ public class PelinHallintaTest2 {
 
             pelihall.heitaPelaajanNoppia(pelaajanimi1, indeksit);
             pelihall.lopetaKierros(pelaajanimi1); //heitetää vain kerran
-            summa1 = summa1 + pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(pelaajanimi1);
+            summa1 = summa1 + pelihall.annaPelaajanViimeisimmanYhdistelmanPisteet(pelaajanimi1);
             System.out.println(pelaajanimi1 + " " + summa1);
 
             //System.out.println(pelaajanimi5);
             pelihall.heitaPelaajanNoppia(pelaajanimi2, indeksit);
             pelihall.lopetaKierros(pelaajanimi2); //heitetää vain kerran
-            summa2 = summa2 + pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(pelaajanimi2);
+            summa2 = summa2 + pelihall.annaPelaajanViimeisimmanYhdistelmanPisteet(pelaajanimi2);
             System.out.println(pelaajanimi2 + " " + summa2);
 
             pelihall.tarkistaAlkaakoUusiKierros();
@@ -93,11 +91,11 @@ public class PelinHallintaTest2 {
         String voittaja = pelihall.julistavoittaja();
         System.out.println("voittaja: " + voittaja);
 
-        if (!voittaja.contains(pelaajanimi1) && summa1 > summa2) {
+        if (!voittaja.contains(pelaajanimi1) && summa1 > summa2 || voittaja.contains("Ei voittajaa")) {
             fail();
         }
 
-        if (!voittaja.contains(pelaajanimi2) && summa2 > summa1) {
+        if (!voittaja.contains(pelaajanimi2) && summa2 > summa1 || voittaja.contains("Ei voittajaa")) {
             fail();
         }
 

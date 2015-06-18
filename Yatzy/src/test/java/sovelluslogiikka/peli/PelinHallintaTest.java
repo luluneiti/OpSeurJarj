@@ -27,7 +27,8 @@ public class PelinHallintaTest {
         pelaajaHallinta.valitsePelaajaksi(pelaajanimi);
         pelaajaHallinta.lisaaPelaaja(pelaajanimi2);
         pelaajaHallinta.valitsePelaajaksi(pelaajanimi2);
-        pelihall = new PelinHallinta("pakkojatsi", pelaajaHallinta);
+        pelihall = new PelinHallinta();
+        pelihall.alustaPeli("pakkojatsi", pelaajaHallinta);
     }
 
     @BeforeClass
@@ -47,9 +48,6 @@ public class PelinHallintaTest {
     public void tearDown() {
     }
 
-    /**
-     * .
-     */
     @Test
     public void heitaPelaajanKaikkiaNoppia() {
 
@@ -77,9 +75,6 @@ public class PelinHallintaTest {
         }
     }
 
-    /**
-     * .
-     */
     @Test
     public void heitaPelaajanOsaNoppia() {
 
@@ -107,9 +102,6 @@ public class PelinHallintaTest {
 
     }
 
-    /**
-     * .
-     */
     @Test
     public void heitaPelaajanOsaNoppia2() {
 
@@ -136,9 +128,6 @@ public class PelinHallintaTest {
 
     }
 
-    /**
-     * .
-     */
     @Test
     public void heitaPelaajanOsaNoppia3() {
 
@@ -164,9 +153,6 @@ public class PelinHallintaTest {
 
     }
 
-    /**
-     * .
-     */
     @Test
     public void annaLukemat() {
 
@@ -186,9 +172,6 @@ public class PelinHallintaTest {
 
     }
 
-    /**
-     * .
-     */
     @Test
     public void annaPelaajanViimeisimmanYhdistelmanPisteet() {
 
@@ -206,14 +189,11 @@ public class PelinHallintaTest {
                 summa = summa + luku;
             }
         }
-        int pist = pelihall.annaPelaajanViimeisimmanYHdistelmanPisteet(pelaajanimi);
+        int pist = pelihall.annaPelaajanViimeisimmanYhdistelmanPisteet(pelaajanimi);
         assertEquals(summa, pist);
 
     }
-    
-    /**
-     * .
-     */
+
     @Test
     public void onkoPelaajanVuoroPaattymassa() {
 
@@ -224,14 +204,11 @@ public class PelinHallintaTest {
         indeksit.add(4);
 
         pelihall.heitaPelaajanNoppia(pelaajanimi, indeksit);
-        
+
         assertEquals(false, pelihall.onkoPelaajanVuoroPaattymassa(pelaajanimi));
 
     }
-    
-     /**
-     * .
-     */
+
     @Test
     public void lopetaVuoro() {
 
@@ -239,10 +216,7 @@ public class PelinHallintaTest {
         assertEquals(true, pelihall.onkoPelaajanVuoroPaattymassa(pelaajanimi));
 
     }
-    
-     /**
-     * .
-     */
+
     @Test
     public void loppuukoKierros() {
 
@@ -250,38 +224,19 @@ public class PelinHallintaTest {
         assertEquals(false, pelihall.tarkistaAlkaakoUusiKierros());
 
     }
-    
-     /**
-     * .
-     */
+
     @Test
     public void annaPelattavaYhd() {
 
-        assertEquals(true,!pelihall.annaPelattavaYhdistelma().equals("ei_tiedossa"));
+        assertEquals(true, !pelihall.annaPelattavaYhdistelma().equals("ei_tiedossa"));
 
     }
-    
-      /**
-     * .
-     */
-    @Test
-    public void annaPelattavaKierronro() {
 
-        assertEquals(true,pelihall.annaKierroslkm()>0 && pelihall.annaKierroslkm()<16);
-
-    }
-    
-      /**
-     * .
-     */
     @Test
     public void loppuukoPeli() {
 
-        assertEquals(false,pelihall.loppuukoPeli());
+        assertEquals(false, pelihall.loppuukoPeli());
 
     }
-
-
-   
 
 }

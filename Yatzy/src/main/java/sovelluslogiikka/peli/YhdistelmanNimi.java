@@ -1,9 +1,10 @@
 package sovelluslogiikka.peli;
 
 /**
- * YhdiselmanNimi tarjoaa käytettäviss olevien yhdistelmien nimet muiden
+ * YhdiselmanNimi tarjoaa käytettäviss olevien yhdistelmien nimet muiden luokkien
  * käyttöön
  *
+ * @author Ulla
  */
 public enum YhdistelmanNimi {
 

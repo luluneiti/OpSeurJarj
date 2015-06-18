@@ -1,6 +1,5 @@
 package sovelluslogiikka.pelaaja;
 
-import sovelluslogiikka.pelaaja.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -29,18 +28,14 @@ public class PelaajanTest {
     public void tearDown() {
     }
 
-    /**
-     * annaNimi metodin testi
-     */
+   
     @Test
     public void pelaajanLuonti() {
         Pelaaja pelaaja = new Pelaaja("pelaaja0");
         assertEquals(pelaaja.annaNimi(), "pelaaja0");
     }
 
-    /**
-     * annaNimi metodin testi
-     */
+   
     @Test
     public void pelaajanLuontiTyhjallaMerkkijonolla() {
 
@@ -55,9 +50,7 @@ public class PelaajanTest {
 
     }
 
-    /**
-     * asetaEnnatysPisteet metodin testi
-     */
+   
     @Test
     public void asetaEnnatysPisteetPositiivisellaParametrilla() {
         Pelaaja pelaaja = new Pelaaja("pelaaja1");
@@ -65,9 +58,7 @@ public class PelaajanTest {
         assertEquals(pelaaja.annaEnnatysPisteet(), 25);
     }
 
-    /**
-     * asetaEnnatysPisteet metodin testi
-     */
+   
     @Test
     public void asetaEnnatysPisteetNegatiivisellaParametrilla() {
         Pelaaja pelaaja = new Pelaaja("pelaaja2");
@@ -83,9 +74,7 @@ public class PelaajanTest {
 
     }
 
-    /**
-     * annaEnnatysPisteet metodin testi
-     */
+   
     @Test
     public void annaEnnatysPisteet() {
         Pelaaja pelaaja = new Pelaaja("pelaaja2");
@@ -93,9 +82,7 @@ public class PelaajanTest {
         assertEquals(pelaaja.annaEnnatysPisteet(), 25);
     }
 
-    /**
-     * annaNimi metodin testi
-     */
+   
     @Test
     public void annaNimi() {
         Pelaaja pelaaja = new Pelaaja("pelaaja3");

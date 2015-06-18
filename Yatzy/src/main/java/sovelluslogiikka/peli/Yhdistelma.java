@@ -1,12 +1,22 @@
 package sovelluslogiikka.peli;
 
+import sovelluslogiikka.peli.YhdistelmanNimi;
+
 /**
- * Yhdistelma tarjoaa tiedot ja palvelut yhdistelmien tallentamiseen
+ * Yhdistelma tarjoaa tiedot ja palvelut jatsissa pelattavien yhdistelmien tallentamiseen
  *
+ * @author Ulla
  */
 public class Yhdistelma {
 
+     /**
+     * Pelattavan yhdistelman nimi
+     * Yhdistelman nimi on jokin YhdistelmanNimi enumeration arvoista
+     */
     private YhdistelmanNimi nimi;
+     /**
+     * Yhdistelman pisteet
+     */
     private int pisteet;
 
     public Yhdistelma(YhdistelmanNimi yhdistemanNimi) {
@@ -17,7 +27,7 @@ public class Yhdistelma {
     /**
      * Metodilla asetetaan yhdiselman pisteet
      *
-     * @param pisteet
+     * @param pisteet yhdistelmän pisteet
      */
     public void asetaPisteet(int pisteet) {
         if (pisteet >= 0) {
@@ -28,7 +38,7 @@ public class Yhdistelma {
     /**
      * Metodi palauttaa yhdistelman pisteet
      *
-     * @return pelaajan nimi
+     * @return yhdistelman pisteet
      */
     public int annaPisteet() {
         return this.pisteet;

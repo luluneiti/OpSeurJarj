@@ -1,6 +1,5 @@
 package sovelluslogiikka.peli;
 
-import sovelluslogiikka.peli.Pakkojatsi;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,6 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import sovelluslogiikka.peli.Noppa;
 
 public class PakkojatsiTest {
 
@@ -33,9 +33,6 @@ public class PakkojatsiTest {
     public void tearDown() {
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaYkkoset() {
 
@@ -49,9 +46,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaKakkoset() {
 
@@ -65,9 +59,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaKolmoset() {
 
@@ -81,9 +72,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaNeloset() {
 
@@ -97,9 +85,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaViitoset() {
 
@@ -113,9 +98,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaKuutoset() {
 
@@ -129,9 +111,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaParinLukematPariAlussa() {
 
@@ -145,9 +124,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaParinLukematPariKeskellä() {
 
@@ -161,9 +137,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaParinLukematPariLopussa() {
 
@@ -177,9 +150,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaParinLukematMontaParia() {
 
@@ -193,9 +163,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaParinLukematMontaParia2() {
 
@@ -209,9 +176,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaKahdenParinLukemat() {
 
@@ -225,9 +189,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaKahdenParinLukemat2() {
 
@@ -240,10 +201,7 @@ public class PakkojatsiTest {
         assertEquals(12, peli.laskeYhdistelmanPisteet(lukemat, 8));
 
     }
-    
-    /**
-     * xx metodin testi
-     */
+
     @Test
     public void summaaKahdenParinLukemat3() {
 
@@ -257,9 +215,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaKolmosienLukematAlussa() {
 
@@ -273,9 +228,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaKolmosienLukematKeskellä() {
 
@@ -289,9 +241,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaKolmosienLukematLopussa() {
 
@@ -305,9 +254,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaNelosienLukematAlussa() {
 
@@ -321,9 +267,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void summaaNelosienLukematLopussa() {
 
@@ -337,9 +280,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaPienisuora() {
 
@@ -353,9 +293,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaPienisuora2() {
 
@@ -369,9 +306,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaPienisuora3() {
 
@@ -385,9 +319,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaSuurisuora() {
 
@@ -401,9 +332,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaSuurisuora2() {
 
@@ -417,9 +345,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaSuurisuora3() {
 
@@ -433,9 +358,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaTaysikasi() {
 
@@ -449,9 +371,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaTaysikasi2() {
 
@@ -465,9 +384,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaTaysikasi3() {
 
@@ -481,9 +397,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaSattuma() {
 
@@ -497,9 +410,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaJatsi() {
 
@@ -513,9 +423,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaJatsi2() {
 
@@ -529,9 +436,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void tarkistaJatsi3() {
 
@@ -545,9 +449,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void laskeKokonaisPisteet() {
 
@@ -565,10 +466,7 @@ public class PakkojatsiTest {
         assertEquals(15, peli.laskeKokonaisPisteet(yhdistelmat));
 
     }
-    
-     /**
-     * xx metodin testi
-     */
+
     @Test
     public void laskeKokonaisPisteet2() {
 
@@ -587,9 +485,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void laskeKokonaisPisteetEkaOsaYli63() {
 
@@ -608,9 +503,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void annaMaxKierroksienMaara() {
 
@@ -618,9 +510,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void luoNopat() {
 
@@ -629,9 +518,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void luoYhdsetlmat() {
 
@@ -640,9 +526,6 @@ public class PakkojatsiTest {
 
     }
 
-    /**
-     * xx metodin testi
-     */
     @Test
     public void pelattavaYhdistelma() {
 

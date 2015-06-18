@@ -6,17 +6,18 @@ import java.util.List;
 import sovelluslogiikka.pelaaja.Pelaaja;
 
 /**
- * Luokka tarjoaa palveluja tiedostosta lukuun ja tiedostoon kirjoittamiseksi
+ * TiedostonHallinta luokka tarjoaa palveluja tiedostosta lukuun ja tiedostoon kirjoittamiseksi
  *
+ * @author Ulla
  */
 public class TiedostonHallinta {
 
     /**
      * Metodi tiedostoon kirjoittamiseksi
      *
-     * @param tiedostonNimi
-     * @param pelaajat
-     * @return
+     * @param tiedostonNimi tiedoston nimi
+     * @param pelaajat pelaajien taulukko
+     * @return true jos jos kirjoitus onnistui
      */
     public boolean kirjoitaTiedostoon(String tiedostonNimi, List<Pelaaja> pelaajat) {
 
@@ -25,8 +26,8 @@ public class TiedostonHallinta {
             ObjectOutputStream oliotiedosto = new ObjectOutputStream(tiedosto);
             oliotiedosto.writeObject((ArrayList) pelaajat);
             oliotiedosto.flush();
-            tiedosto.close();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
         return true;
@@ -36,22 +37,21 @@ public class TiedostonHallinta {
     /**
      * Metodi tietojen lukimiseen tiedostosta
      *
-     * @param tiedostonNimi
-     * @return
+     * @param tiedostonNimi tiedoston nimi
+     * @return lista luetuista pelaajista
      */
     public List<Pelaaja> lueTiedostosta(String tiedostonNimi) {
 
         List<Pelaaja> pelaajat = new ArrayList<Pelaaja>();
 
         try {
-
             FileInputStream tiedosto = new FileInputStream(tiedostonNimi);
             ObjectInputStream oliotiedosto = new ObjectInputStream(tiedosto);
             pelaajat = (ArrayList) oliotiedosto.readObject();
             tiedosto.close();
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() + e.getLocalizedMessage());
         }
 
         return pelaajat;

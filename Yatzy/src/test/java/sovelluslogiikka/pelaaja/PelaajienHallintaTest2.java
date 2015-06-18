@@ -1,6 +1,5 @@
 package sovelluslogiikka.pelaaja;
 
-import sovelluslogiikka.pelaaja.PelaajienHallinta;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -33,9 +32,7 @@ public class PelaajienHallintaTest2 {
     public void tearDown() {
     }
 
-    /**
-     * lisaaPelaaja metodin testi
-     */
+  
     @Test
     public void lisaaPelaaja() {
 
@@ -45,9 +42,7 @@ public class PelaajienHallintaTest2 {
 
     }
 
-    /**
-     * annaPelaajat metodin testi
-     */
+   
     @Test
     public void annaKaikkiPelaajat() {
 
@@ -57,9 +52,7 @@ public class PelaajienHallintaTest2 {
         assertTrue(pelaajaLista.contains("testi2") && pelaajaLista.contains("testi3"));
     }
 
-    /**
-     * annaPelaajat metodin testi
-     */
+   
     @Test
     public void annaValitutPelaajat() {
 
@@ -70,9 +63,7 @@ public class PelaajienHallintaTest2 {
         assertTrue(pelaajaLista.contains("testi2") && pelaajaLista.contains("testi3"));
     }
 
-    /**
-     * lisaaPelaaja metodin testi
-     */
+   
     @Test
     public void lisaaTuplaPelaaja() {
 
@@ -87,9 +78,7 @@ public class PelaajienHallintaTest2 {
 
     }
 
-    /**
-     * annaPelaajat metodin testi
-     */
+    
     @Test
     public void tallennaPelaaja() {
 
@@ -99,9 +88,7 @@ public class PelaajienHallintaTest2 {
 
     }
 
-    /**
-     * annaPelaajat metodin testi
-     */
+   
     @Test
     public void annaEnnatyksenTehneet() {
 
@@ -113,9 +100,7 @@ public class PelaajienHallintaTest2 {
 
     }
 
-    /**
-     * annaPelaajanPisteet metodin testi
-     */
+   
     @Test
     public void annaPelaajanPisteet() {
 

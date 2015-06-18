@@ -30,9 +30,7 @@ public class NopanTest {
     public void tearDown() {
     }
 
-    /**
-     * annaLukema metodin testi
-     */
+  
     @Test
     public void annaLukemaEnnenHeittoa() {
 
@@ -41,9 +39,7 @@ public class NopanTest {
 
     }
 
-    /**
-     * annaLukema metodin testi
-     */
+   
     @Test
     public void annaLukemaHeitonJalkeen() {
 
@@ -53,9 +49,7 @@ public class NopanTest {
 
     }
 
-    /**
-     * heita metodin testi
-     */
+ 
     @Test
     public void heita() {
 
@@ -64,9 +58,7 @@ public class NopanTest {
 
     }
 
-    /**
-     * heita metodin testi
-     */
+   
     @Test
     public void annaKierroslkm() {
 
@@ -76,9 +68,7 @@ public class NopanTest {
 
     }
 
-    /**
-     * nollaakierroslkm metodin testi
-     */
+   
     @Test
     public void nollaaKierroslkm() {
 
